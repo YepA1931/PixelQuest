@@ -204,6 +204,29 @@ const SC={};
 function spr(key,w,h,sc,draw){if(SC[key])return SC[key];const c=document.createElement('canvas');c.width=w*sc;c.height=h*sc;const x=c.getContext('2d');draw((rows,pal,ox,oy)=>rows.forEach((r,j)=>{for(let i=0;i<r.length;i++){const ch=r[i],f=pal[ch];if(ch!='.'&&f){x.fillStyle=f;x.fillRect((ox+i)*sc,(oy+j)*sc,sc,sc)}}}));return SC[key]=c}
 const fz=p=>Object.fromEntries(Object.keys(p).map(k=>[k,k=='k'?p.k:'#fff']));
 const BM={"warrior": ["......RRR.........", ".....RRRRRR.......", "....kRRRRRRk......", "....kYZYYYYk......", "....kYYYYYYk......", "....kYsssskk......", "....kYseseYk......", "....kksssskk......", "..kYYkYYYYkkYYk...", "kRRkZYYYYYYYk.....", "kRRkZYyYYyYYk.....", "kRRkYYYYYYYyk.....", ".kRkRRRRRRRRk.....", ".kRkRYRYRYRYk.....", "..kRkRRkkRRk......"], "summoner": ["..................", "......kkkk........", ".....kssssk.......", "....kssssssk......", "....kssssssk......", "....ksBssBsk......", "....ksPssPsk......", "....kssddssk......", ".kWWWkOssOkWWWk...", ".kWVWkWOOWkWVWk...", "..kkOWWOOWWOkk....", "...kOWWOOWWOk.....", "...kOVVOOVVOk.....", "...kRRRWWRRRk.....", "...kRrRkkRrRk....."], "assassin": ["..................", "..................", ".....kWWWWk.......", "....kWWWWWWk......", "...WkggRggWk......", "...kWWsseseWk.....", "...kWWssssWWk.....", "...kWWksskWWk.....", "...kgbgbgbggk.....", "...kWgbgbgWWk.....", "...kWWgggWWWk.....", "...kgWWWWWWgk.....", "...kggggggggk.....", "...kWWGWWGWWk.....", "...kWGWWGWWGk....."], "mage": ["......kPk.........", ".....kPPPk........", "....kPgggPk.......", "..kkPPPPPPkk......", "...kHHHHHHHk......", "...kHHseseHk......", "...kHHssssHk......", "...kHHkssHkk......", "..kHHkPPPPkHk.....", "..kHHkPQPPkHk.....", "..kHHkPPPPkHk.....", "..kHHkpggpkHk.....", "..kHkPPPPPPkHk....", ".kPPPPQPPPPPk.....", ".kppppppppppk....."], "dragon": ["..................", "..................", "....kkHHHHkk......", "...kHHHHHHHHk.....", "...kHgggggHk......", "...kHHseseHk......", "...kHHssssHk......", "...kHHkssHkk......", "..kHHkTTTTkHk.....", "..kHHkTssTkHk.....", "..kHHkTTTTkHk.....", "...kHkgggggkHk....", "...kHkTTTTTTkk....", "...kttTtTtTtk.....", "....kTkTTkTk......"], "naturist": ["..................", ".....FWFWF........", "....kFWFWFWk......", "...kYYYYYYYYk.....", "...kYYYYYYYYk.....", "..sYYseseYYs......", "...kYYssssYk......", "...kYYkssYkk......", "..kYYksssskYk.....", "..kYYGGkkGGYk.....", "..kYYuGGuGGYk.....", "..kYYksssskYk.....", "..kYkGGGGGGkYk....", "..kGuGuGuGuGGk....", "...kGkuGGukGk....."]},CPAL={"warrior": {"Y": "#e2b43a", "Z": "#fff0a0", "y": "#a07818", "R": "#c42020", "q": "#c79a28", "o": "#6a4a20"}, "summoner": {"W": "#ece8d4", "V": "#b8b194", "O": "#2a2438", "P": "#4ab0ff", "B": "#eafcff", "R": "#a01818", "r": "#6a0e0e", "s": "#7b4a2e", "d": "#4a2a18", "D": "#40305a", "q": "#3a2a3a", "o": "#b8b194"}, "assassin": {"W": "#f6f2e6", "G": "#d4ccb2", "g": "#e2b238", "b": "#2a7ac8", "R": "#d03030", "q": "#f2c08a", "o": "#c9a030"}, "mage": {"P": "#8a3fc0", "p": "#5a2a8a", "Q": "#c07af0", "H": "#1c1626", "g": "#f0c040", "q": "#5a2a8a", "o": "#3a2060"}, "dragon": {"H": "#7a4a28", "T": "#c98a4a", "t": "#8a5a2a", "g": "#e0b030", "q": "#9a6a3a", "o": "#5a3a20"}, "naturist": {"Y": "#f2d86a", "F": "#f070a0", "W": "#fff0f4", "G": "#4cb44c", "u": "#2f7a2f", "q": "#f2c08a", "o": "#6a4a28"}};
+(function(){
+const ed=(c,r,i,ch)=>{const s=BM[c][r];BM[c][r]=s.slice(0,i)+ch+s.slice(i+1)};
+const pal=(c,o)=>Object.assign(CPAL[c],o);
+// 공통 새 팔레트 글자: h=눈썹, j=입, z=볼터치
+for(const c of Object.keys(CPAL))pal(c,{h:'#4a2e18',j:'#b0443a',z:'#f08a7a'});
+// 전사: 눈썹+입, 투구/깃 색 선명하게 (장비 덧씌움 없음)
+ed('warrior',5,7,'h');ed('warrior',5,9,'h');ed('warrior',7,7,'j');ed('warrior',7,8,'j');
+pal('warrior',{Y:'#f2c23c',Z:'#fff4b0',y:'#b8861c',R:'#e02828'});
+// 마법사: 머리 윤기, 입, 모자색
+ed('mage',4,5,'K');ed('mage',4,6,'K');ed('mage',7,7,'j');
+pal('mage',{H:'#241a3c',K:'#4a3a7c',P:'#9b4fd6',Q:'#d89aff',p:'#6a32a0'});
+// 암살자: 입, 두건 흰색 밝게, 허리띠/장식 색
+ed('assassin',6,7,'j');
+pal('assassin',{W:'#fffaf0',G:'#d8d0b4',g:'#f2c640',b:'#2f8ae8',R:'#e63c3c'});
+// 소환사: 눈 빛 강조
+pal('summoner',{P:'#66ccff',B:'#f4ffff',s:'#8a5434'});
+// 용술사: 머리색 풍부
+pal('dragon',{H:'#8e4e24',T:'#dc9650',g:'#f4c43a'});
+// 자연술사: 볼터치, 입, 머리 밝게
+ed('naturist',6,6,'z');ed('naturist',6,9,'z');ed('naturist',7,7,'j');
+pal('naturist',{Y:'#ffe47e',F:'#ff6aa6',G:'#52c452',u:'#2f8a3a'});
+})();
+
 function charPost(c){const x=c.getContext('2d'),W=c.width,H=c.height,id=x.getImageData(0,0,W,H),d=id.data,sc=2,gw=W/sc,gh=H/sc,A=(i,j)=>i<0||j<0||i>=gw||j>=gh?0:d[((j*sc)*W+i*sc)*4+3],L=(i,j)=>{if(i<0||j<0||i>=gw||j>=gh)return 0;const o=((j*sc)*W+i*sc)*4;return d[o+3]?d[o]+d[o+1]+d[o+2]:0},out=new Uint8ClampedArray(d);
  for(let j=0;j<gh;j++)for(let i=0;i<gw;i++){const o=((j*sc)*W+i*sc)*4;if(!d[o+3])continue;let r=d[o],g=d[o+1],b=d[o+2];const lm=r+g+b;if(lm<90)continue;if(lm<740){const m=lm/3,k=1.22;r=m+(r-m)*k;g=m+(g-m)*k;b=m+(b-m)*k}
   const dk=n=>n<90,up=L(i,j-1),lf=L(i-1,j),dn=L(i,j+1),rt=L(i+1,j);let f=1;if((!up||dk(up))&&(!lf||dk(lf)))f=1.18;else if((!dn||dk(dn))&&(!rt||dk(rt)))f=.78;else if(!up||dk(up)||!lf||dk(lf))f=1.1;else if(!dn||dk(dn)||!rt||dk(rt))f=.88;
@@ -446,7 +469,7 @@ BC.centaur=(t,m,p)=>{SX=-3;const w=m=='walk',bob=w&&Math.sin(t*16)>0?-1:0,BR='#c
  pg([[5,-31+bob],[-1,-30+bob+q(Math.sin(t*4)*1.5)],[-6,-22+bob],[3,-25+bob]],RD);
  ell(7,-27+bob,5,5.5,SK);R(3,-24+bob,9,2,GOLD);
  HD(9,-31+bob,0.68,()=>{ell(4,-39+bob,9,9,HAIR);ell(9,-38+bob,8,7.5,SK);ell(8,-44+bob,9,3.5,HAIR);R(1,-42+bob,17,1,GOLD);R(9,-43+bob,2,2,'#e03050');
- eye(7,-40+bob,'#6a3a20');eye(12,-40+bob,'#6a3a20');brow(6,-43+bob,9,-42+bob,HAIR);brow(16,-43+bob,13,-42+bob,HAIR);
+ eye(7,-40+bob,'#6a3a20');eye(12,-40+bob,'#6a3a20');R(6,-36+bob,3,1,'#d84040');R(11,-36+bob,3,1,'#d84040');brow(6,-43+bob,9,-42+bob,HAIR);brow(16,-43+bob,13,-42+bob,HAIR);
  R(4,-35+bob,3,1,PINK);R(15,-35+bob,3,1,PINK);R(10,-34+bob,3,1,'#8a3a3a');R(10,-33+bob,1,1,'#fff');});
  const H1=[q(lerp(17,23,aim)),q(lerp(-29,-33,aim))+bob],H2=[q(lerp(15,11,pull)),q(lerp(-29,-35,pull))+bob];
  lim([[9,-28+bob],H2],3.8,'#e0ae88');lim([[9,-28+bob],H1],3.8,SK);ell(H1[0],H1[1],2.4,2.4,SK);
@@ -468,7 +491,7 @@ BC.spider=(t,m,p)=>{const w=m=='walk',bob=w&&Math.sin(t*14)>0?-1:0,BD='#245a66',
   pg([[-3+ln,-48+bob],[-1+ln,-57+bob],[3+ln,-49+bob]],'#2a8a50');pg([[2+ln,-49+bob],[4+ln,-59+bob],[7+ln,-49+bob]],'#2a8a50');pg([[6+ln,-49+bob],[10+ln,-57+bob],[12+ln,-48+bob]],'#2a8a50');
   R(-1+ln,-57+bob,1,2,GL);R(4+ln,-59+bob,1,2,GL);R(10+ln,-57+bob,1,2,GL);
   ell(4+ln,-44+bob,8,7.6,SKN);ell(4+ln,-49+bob,8.4,3.4,'#2a6a50');R(-3+ln,-47+bob,14,1,GL);
-  eye(1+ln,-46+bob,'#78e040');eye(6+ln,-46+bob,'#78e040');R(3+ln,-50+bob,1,1,GL);R(5+ln,-50+bob,1,1,GL);
+  eye(1+ln,-46+bob,'#ff3a30');eye(6+ln,-46+bob,'#ff3a30');R(-1+ln,-49+bob,1,1,'#ff3a30');R(10+ln,-49+bob,1,1,'#ff3a30');R(3+ln,-50+bob,1,1,GL);R(5+ln,-50+bob,1,1,GL);
   R(3+ln,-39+bob,3,1,'#2a3a4a');R(3+ln,-38+bob,1,1,'#fff');R(5+ln,-38+bob,1,1,'#fff')})};
 // ===== 청동 거상
 BC.colossus=(t,m,p)=>{const w=m=='walk',bob=w&&Math.sin(t*10)>0?-1:0,BZ='#c8903c',BD='#8a5a28',LT='#f0c878',RD='#d84040';
@@ -476,7 +499,7 @@ BC.colossus=(t,m,p)=>{const w=m=='walk',bob=w&&Math.sin(t*10)>0?-1:0,BZ='#c8903c
  const leg=(x,k,c)=>{const up=gait(t,w,k);R(x,-10,5,up?5:10,c);R(x-1,up?-4:-2,7,3,BD)};
  leg(-6,0,BD);leg(1,1,BZ);
  rr(-7,-28+bob,14,18,BZ);rr(-5,-25+bob,10,11,LT);R(-7,-14+bob,14,3,BD);R(-2,-14+bob,4,3,GOLD);R(-2,-11+bob,4,7,RD);
- R(-1,-24+bob,2,8,BD);
+ R(-1,-24+bob,2,8,BD);R(-1,-22+bob,2,1,'#ffb040');R(-1,-19+bob,2,1,'#ffb040');
  const hy=-46+bob+q(atk*2);
  HD(0,hy+18,0.6,()=>{pg([[-1,hy],[3,hy],[7,hy-8+q(Math.sin(t*3))],[2,hy-5]],RD);
  rr(-11,hy,22,18,'#e8b860');R(-8,hy+7,16,6,EYD);R(-6,hy+8,4,4,'#ffa030b8');R(2,hy+8,4,4,'#ffa030b8');R(-6,hy+8,1,1,'#fff');R(2,hy+8,1,1,'#fff');
@@ -496,8 +519,8 @@ BC.minotaur=(t,m,p)=>{const w=m=='walk',bob=w&&Math.sin(t*10)>0?-1:0,SK='#b89460
  HD(2,hy+21,.86,()=>{
   lim([[-5,hy+6],[-13,hy+3],[-17,hy-3],[-15,hy-9]],4.2,HORN);lim([[9,hy+6],[17,hy+3],[21,hy-3],[19,hy-9]],4.2,HORN);R(-16,hy-10,2,2,HT);R(18,hy-10,2,2,HT);
   pg([[-7,hy+9],[-14,hy+8],[-8,hy+13]],HC);pg([[11,hy+9],[18,hy+8],[12,hy+13]],HC);
-  ell(2,hy+11,10,9.5,HC);ell(11,hy+15,5.8,4.6,SN);R(12,hy+14,1,1,EYD);R(15,hy+14,1,1,EYD);line(10,hy+19,15,hy+19,EYD);R(11,hy+19,1,2,'#f0e8d0');R(14,hy+19,1,2,'#f0e8d0');
-  R(-4,hy+6,16,2,DK);eye(1,hy+8,'#e8b040');eye(7,hy+8,'#e8b040');line(0,hy+6,5,hy+8,EYD);line(11,hy+6,8,hy+8,EYD)});
+  ell(2,hy+11,10,9.5,HC);ell(11,hy+15,5.8,4.6,SN);R(12,hy+14,1,1,EYD);R(15,hy+14,1,1,EYD);R(13,hy+16,2,1,'#e8c050');R(13,hy+17,1,1,'#e8c050');line(10,hy+19,15,hy+19,EYD);R(11,hy+19,1,2,'#f0e8d0');R(14,hy+19,1,2,'#f0e8d0');
+  R(-4,hy+6,16,2,DK);eye(1,hy+8,'#ff3a1c');eye(7,hy+8,'#ff3a1c');line(0,hy+6,5,hy+8,EYD);line(11,hy+6,8,hy+8,EYD)});
  const hh=m=='atk'?[q(lerp(14,20,u)),q(lerp(-46,-10,u))+bob]:[18,-18+bob];
  const sh=[8,-27+bob],at=(f)=>[sh[0]+(hh[0]-sh[0])*f,sh[1]+(hh[1]-sh[1])*f];
  lim([sh,hh],5.8,SK);ell(8,-27+bob,4.4,4,SK);lim([at(.6),at(.9)],7,LTH);const sp=at(.75);R(q(sp[0])-1,q(sp[1])-1,1,1,'#c8c0a8');R(q(sp[0])+1,q(sp[1])+1,1,1,'#c8c0a8');ell(hh[0],hh[1],3.4,3.4,SK);
