@@ -799,7 +799,7 @@ function dCC(){if(P.dead)return;const x=P.x,y=P.y,t=G.t;
 /* ---- helpers for boss anchors ---- */
 const bhand=e=>({x:e.x+e.f*e.w*.42,y:e.y-e.h*.5});
 function hHead(e,ix){const cs=e.cs||1,ang=(-80+ix*20)*Math.PI/180,Rr=ix%2?31:24,fx=ix<4?-1:1,tx=Math.sin(ang)*Rr*1.15+fx*3.6,ty=-14-Math.cos(ang)*Rr*.95+2;return{x:e.x+e.f*tx*cs,y:e.y+2+ty*cs}}
-function btg(e){let t=P,bd=bzd(e,P);for(const a of AL){if(a.hp==null||a.hp<=0)continue;const d=bzd(e,a)*1.15;if(d<bd){bd=d;t=a}}return t}
+function btg(e){let t=P,bd=bzd(e,P);if(e.bk)return t;for(const a of AL){if(a.hp==null||a.hp<=0)continue;const d=bzd(e,a);if(d<bd){bd=d;t=a}}return t}
 /* ---- generic ctl objects ---- */
 function bDrain(e,mul,pct){bsay(e,'피 흡수');const m=bhand(e);BO.push({x:e.x,y:e.y+1,l:.95,m:.95,dr:o=>{const u=o.l/o.m,tx=P.x,ty=P.y-10;g.save();g.globalCompositeOperation='lighter';for(let i=0;i<14;i++){const q=((i/14)+G.t*1.6)%1,x=tx+(m.x-tx)*q+Math.sin(q*9+i)*5,y=ty+(m.y-ty)*q-Math.sin(q*3.14)*14;g.globalAlpha=Math.min(1,u*2)*.9;g.fillStyle=i%2?'#f33':'#a0a';g.beginPath();g.arc(x,y,2.4,0,7);g.fill()}g.globalAlpha=Math.min(1,u*2)*.5;g.strokeStyle='#f33';g.lineWidth=2;g.beginPath();g.ellipse(P.x,P.y,12+Math.sin(G.t*14)*2,5,0,0,7);g.stroke();g.restore()}});
  sch(.7,()=>{if(e.dead)return;if(bzd(e,P)<520&&!P.dead){const d=e.d*mul;if(bdm(d,'e',e,.3)){e.hp=Math.min(e.mh,e.hp+e.mh*pct);FX.push({x:e.x,y:e.y,r:30,l:.3,m:.3,c:'#f44'});DN.push({x:e.x,y:e.y-e.h-4,t:.8,v:'+HP'})}}})}
