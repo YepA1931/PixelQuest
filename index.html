@@ -814,8 +814,8 @@ function nat(n){if(HC[n])return HC[n];const c=cell(n);if(!c)return HC[n]={h:60,w
   const d=sx.getImageData(0,0,700,600).data;let top=600,l=700,r=0;for(let j=0;j<600;j++)for(let i=0;i<700;i++)if(d[(j*700+i)*4+3]>40){if(j<top)top=j;if(i<l)l=i;if(i>r)r=i}
   const h=500-top;if(h>best.h)best={h:h,w:r-l}}
  return HC[n]=best}
-const UB=document.createElement('canvas');UB.width=1400;UB.height=1000;const ux=UB.getContext('2d',{willReadFrequently:true});
-const UT=document.createElement('canvas');UT.width=1400;UT.height=1000;const ut=UT.getContext('2d',{willReadFrequently:true});
+const UB=document.createElement('canvas');UB.width=2400;UB.height=1700;const ux=UB.getContext('2d',{willReadFrequently:true});
+const UT=document.createElement('canvas');UT.width=2400;UT.height=1700;const ut=UT.getContext('2d',{willReadFrequently:true});
 const TXC=document.createElement('canvas');TXC.width=TXC.height=96;{const x=TXC.getContext('2d');let r=7;const rnd=()=>(r=(r*16807)%2147483647)/2147483647;
  for(let i=0;i<520;i++){const px=rnd()*96|0,py=rnd()*96|0,q=rnd();x.fillStyle=q<.5?'rgba(0,0,0,'+(.10+rnd()*.16)+')':'rgba(255,255,255,'+(.08+rnd()*.14)+')';x.fillRect(px,py,1+(rnd()*2|0),1+(rnd()*2|0))}
  x.strokeStyle='rgba(0,0,0,.07)';x.lineWidth=1;for(let i=-96;i<96;i+=6){x.beginPath();x.moveTo(i,96);x.lineTo(i+96,0);x.stroke()}}
@@ -823,16 +823,16 @@ const TXP=ux.createPattern(TXC,'repeat');
 function texture(bw,bh,ax,ay,h,s){ux.save();ux.setTransform(1,0,0,1,0,0);ux.globalCompositeOperation='source-atop';
  const gr=ux.createLinearGradient(0,ay-h,0,ay);gr.addColorStop(0,'rgba(255,255,255,.20)');gr.addColorStop(.45,'rgba(255,255,255,0)');gr.addColorStop(1,'rgba(0,0,0,.26)');ux.fillStyle=gr;ux.fillRect(0,0,bw,bh);
  const gs=Math.max(.5,h/110);ux.translate(ax,ay);ux.scale(gs,gs);ux.fillStyle=TXP;ux.fillRect(-ax/gs,-ay/gs,bw/gs,bh/gs);ux.restore()}
-const OUTC={'하데스 영혼 · 곡성':'#3a7a9a','고대전사 · 쌍검':'#3a7a9a','고대궁수 · 사격':'#3a7a9a','고대마법사 · 원소탄':'#3a7a9a'};const AMAP={'하데스 영혼 · 곡성':.78,'고대전사 · 쌍검':.76,'고대궁수 · 사격':.76,'고대마법사 · 원소탄':.76};let RLT=0,RMS=0;const RC=new Map(),CMP=document.createElement('canvas');CMP.width=1400;CMP.height=1000;const cx_=CMP.getContext('2d',{willReadFrequently:true});
-function draw(n,ctx,x,y,h,fr,t,idle,o){const c=cell(n);if(!c)return false;const N=nat(n),s=h/Math.max(10,N.h);
- const T=Math.round(t*16),pre=n+'|'+(fr>0?1:0)+'|'+Math.round(h)+'|'+(idle?1:0)+'|',key=pre+T;let E=RC.get(key);
+const OUTC={'하데스 영혼 · 곡성':'#3a7a9a','고대전사 · 쌍검':'#3a7a9a','고대궁수 · 사격':'#3a7a9a','고대마법사 · 원소탄':'#3a7a9a'};const AMAP={'하데스 영혼 · 곡성':.78,'고대전사 · 쌍검':.76,'고대궁수 · 사격':.76,'고대마법사 · 원소탄':.76};let RLT=0,RMS=0;const RC=new Map(),CMP=document.createElement('canvas');CMP.width=2400;CMP.height=1700;const cx_=CMP.getContext('2d',{willReadFrequently:true});
+function draw(n,ctx,x,y,h,fr,t,idle,o){const c=cell(n);if(!c)return false;const SSg=(ctx.canvas&&ctx.canvas.id=='c')?(window.RIGSS||1):1,WS=window.RIGWS||1,SSe=Math.max(1,Math.min(SSg,2360/(h*3.4*WS),1660/(h*1.9)));h=h*SSe;const N=nat(n),s=h/Math.max(10,N.h);
+ const T=Math.round(t*16),pre=n+'|'+(fr>0?1:0)+'|'+Math.round(h)+'|'+WS+'|'+(idle?1:0)+'|',key=pre+T;let E=RC.get(key);
  if(!E){const nw=performance.now();if(nw-RLT>6){RLT=nw;RMS=0}
   if(RMS>=2){for(let d=1;d<=4&&!E;d++)E=RC.get(pre+(T-d))||RC.get(pre+(T+d))}
   if(E)RMS=RMS;else RMS++}
  if(!E){
- const bw=Math.min(1400,Math.ceil(h*3.4+40)),bh=Math.min(1000,Math.ceil(h*1.9+40)),ax=bw>>1,ay=bh-14;
+ const bw=Math.min(2400,Math.ceil(h*3.4*WS+40)),bh=Math.min(1700,Math.ceil(h*1.9+40)),ax=bw>>1,ay=bh-14;
  ux.setTransform(1,0,0,1,0,0);ux.clearRect(0,0,bw,bh);g=ux;IDLE=idle?1:0;
- ux.save();ux.translate(ax,ay);ux.scale(fr>0?s:-s,s);ux.lineJoin='round';
+ ux.save();ux.translate(ax,ay);ux.scale(fr>0?s*WS:-s*WS,s);ux.lineJoin='round';
  try{c[1](t)}catch(e){window.__rigerr=(window.__rigerr||'')+n+':'+e.message+'\n'}ux.restore();IDLE=0;
  if(window.RIGTX!==0&&!AMAP[n])texture(bw,bh,ax,ay,h,s);
  if(!AMAP[n]){const id=ux.getImageData(0,0,bw,bh),p=id.data,SA=window.RIGSAT||1.22,BR=window.RIGBR||1.06;for(let k=0;k<p.length;k+=4){if(!p[k+3])continue;const r=p[k],g_=p[k+1],b=p[k+2],l=.3*r+.59*g_+.11*b;p[k]=Math.min(255,(l+(r-l)*SA)*BR);p[k+1]=Math.min(255,(l+(g_-l)*SA)*BR);p[k+2]=Math.min(255,(l+(b-l)*SA)*BR)}ux.putImageData(id,0,0)}
@@ -844,8 +844,8 @@ function draw(n,ctx,x,y,h,fr,t,idle,o){const c=cell(n);if(!c)return false;const 
  const d=cx_.getImageData(0,0,bw,bh).data;let x0=bw,y0=bh,x1=-1,y1=-1;
  for(let j=0;j<bh;j++){const r=j*bw*4;for(let i=0;i<bw;i++)if(d[r+i*4+3]){if(i<x0)x0=i;if(i>x1)x1=i;if(j<y0)y0=j;if(j>y1)y1=j}}
  if(x1<0){E={c:null}}else{const cv=document.createElement('canvas');cv.width=x1-x0+1;cv.height=y1-y0+1;cv.getContext('2d').drawImage(CMP,x0,y0,cv.width,cv.height,0,0,cv.width,cv.height);E={c:cv,ox:x0-ax,oy:y0-ay}}
- if(RC.size>900)RC.clear();RC.set(key,E)}
- if(E.c){ctx.save();ctx.imageSmoothingEnabled=false;if(AMAP[n])ctx.globalAlpha*=AMAP[n];ctx.drawImage(E.c,Math.round(x)+E.ox,Math.round(y)+E.oy);ctx.restore()}
+ if(RC.size>320)RC.clear();RC.set(key,E)}
+ if(E.c){ctx.save();ctx.imageSmoothingEnabled=SSe>1;if(AMAP[n])ctx.globalAlpha*=AMAP[n];if(SSe>1)ctx.drawImage(E.c,Math.round(x*SSe)/SSe+E.ox/SSe,Math.round(y*SSe)/SSe+E.oy/SSe,E.c.width/SSe,E.c.height/SSe);else ctx.drawImage(E.c,Math.round(x)+E.ox,Math.round(y)+E.oy);ctx.restore()}
  return true}
 const HO={warrior:{at:'slash',bd:'#f2c040',lg:'#e0a830',cape:'#d8321f',hat:'crest',belt:'#d8321f',skirt:'#d8321f',shield:'#d8321f',fx:'#ffd890'},
  mage:{at:'cast',bd:'#8a52c8',lg:'#6a3aa0',hat:'wizard',belt:'#ffe27a',fx:'#8ab8ff'},
@@ -867,7 +867,7 @@ return{map,draw,cell,nat,heroCanvas,setSLC:v=>{SLC=v},setTK:v=>{TKC=v},DPAL,LPAL
 <script>
 if(window.__NOMOBILE)throw 0;
 const $=s=>document.querySelector(s),R=Math.random,W=400,H=400,GT=170,GB=386,WW=1600;
-const cv=$('#c'),g=cv.getContext('2d'),ov=$('#ov');cv.width=W;cv.height=H;g.imageSmoothingEnabled=false;
+const cv=$('#c'),g=cv.getContext('2d'),ov=$('#ov');window.RIGSS=Math.min(6,Math.max(1,+new URLSearchParams(location.search).get('ss')||3));cv.width=W*RIGSS;cv.height=H*RIGSS;g.scale(RIGSS,RIGSS);g.imageSmoothingEnabled=false;
 const CL={mage:{n:'법사',a:5,d:2,s:4,k:'i',c:'#36d'},warrior:{n:'전사',a:3,d:5,s:3,k:'s',k2:'d',c:'#c53'},summoner:{n:'소환사',a:4,d:3,s:4,k:'i',c:'#668'},assassin:{n:'어쌔신',a:4,d:3,s:4,k:'d',k2:'s',c:'#939'},dragon:{n:'용의 신궁',a:4,d:3,s:4,k:'d',k2:'s',c:'#fc4'},naturist:{n:'자연술사',a:3,d:4,s:4,k:'i',c:'#4a9'}};
 const CP={hunter:{c:'#3d8a3d',d:'#276027',l:'#6cc06c'},assassin:{c:'#6a3d8a',d:'#432660',l:'#9a6cc0'},warrior:{c:'#b8402a',d:'#7c2a1a',l:'#e06a4a'},mage:{c:'#2f5fd0',d:'#1e3c8c',l:'#6a9af0'},summoner:{c:'#555a78',d:'#363954',l:'#8a90b8'},naturist:{c:'#3e8f6a',d:'#245a40',l:'#7fd1a0'},dragon:{c:'#d9a62a',d:'#8a6a14',l:'#ffe27a'}};
 const SA={mage:'iiiii',warrior:'sssss',assassin:'ddddd',summoner:'hhhnh',dragon:'DDDDD',naturist:'iiiii'},sbk=(n,i,c)=>{const k=(SA[n]||'ccccc')[i];return k=='n'?1:k=='D'?1+.0175*(G.stat.d+G.stat.s):k=='c'?sb(c):1+.035*G.stat[k]},sb=c=>1+(c.k2?.03*(G.stat[c.k]+G.stat[c.k2]):.035*G.stat[c.k]);const ST={s:'힘',d:'민첩',i:'지능',h:'체력'};
@@ -2248,7 +2248,7 @@ const RBM={centaur:'네소스 (st2)',centaurm:'켄타우르스 · 활',spider:'�
 const RBK={};const RMH={baby:26,medusah:44,centaurm:51,colossus:51,minotaurm:51};
 function rgT(e,sp){return .2+.19*Math.sin(G.t*(sp||7)+(e.id||(e.x*.05)))}
 const RWS={'망령 · 울음':1.46,'묘비 · 해골 폭발':1.46,'해골 전사 · 베기':1.575,'해골 궁수 · 점사격':1.575,'소환 해골 전사 · 베기':1.575,'소환 해골 궁수 · 점사격':1.575,'고대전사 · 쌍검':1.575,'고대궁수 · 사격':1.575,'고대마법사 · 원소탄':1.575,'청동병 · 베기':1.5};
-function rgDraw(nm,x,y,h,f,t,idle,al){try{if(al!=null&&al!=1)g.globalAlpha=al;const ws=RWS[nm]||1,X=Math.round(x);if(ws!=1){g.save();g.translate(X,0);g.scale(ws,1);g.translate(-X,0)}const r=RIG.draw(nm,g,X,Math.round(y),h,f<0?-1:1,t,idle);if(ws!=1)g.restore();g.globalAlpha=1;return r}catch(er){g.globalAlpha=1;return false}}
+function rgDraw(nm,x,y,h,f,t,idle,al){try{if(al!=null&&al!=1)g.globalAlpha=al;const ws=RWS[nm]||1,X=Math.round(x);window.RIGWS=ws;const r=RIG.draw(nm,g,X,Math.round(y),h,f<0?-1:1,t,idle);window.RIGWS=1;g.globalAlpha=1;return r}catch(er){g.globalAlpha=1;return false}}
 function rigE(e){let nm,h;const att=e.c>0?Math.min(.99,1-e.c/.5):-1;
  if(e.k==0){RIG.setSLC(RSL[(e.cv|0)%5]);nm='슬라임 · 점액탄';h=(G.ph||34)/3*1.4}
  else if(e.k==5){nm=e.rg?'해골 궁수 · 점사격':'해골 전사 · 베기';h=38.5}
