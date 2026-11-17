@@ -867,7 +867,7 @@ return{map,draw,cell,nat,heroCanvas,setSLC:v=>{SLC=v},setTK:v=>{TKC=v},DPAL,LPAL
 <script>
 if(window.__NOMOBILE)throw 0;
 const $=s=>document.querySelector(s),R=Math.random,W=400,H=400,GT=170,GB=386,WW=1600;
-const cv=$('#c'),g=cv.getContext('2d'),ov=$('#ov');window.RIGSS=Math.min(6,Math.max(1,+new URLSearchParams(location.search).get('ss')||3));cv.width=W*RIGSS;cv.height=H*RIGSS;g.scale(RIGSS,RIGSS);g.imageSmoothingEnabled=false;
+const cv=$('#c'),g=cv.getContext('2d'),ov=$('#ov');window.RIGSS=Math.min(6,Math.max(1,+new URLSearchParams(location.search).get('ss')||2.5));cv.width=W*RIGSS;cv.height=H*RIGSS;g.scale(RIGSS,RIGSS);g.imageSmoothingEnabled=false;
 const CL={mage:{n:'법사',a:5,d:2,s:4,k:'i',c:'#36d'},warrior:{n:'전사',a:3,d:5,s:3,k:'s',k2:'d',c:'#c53'},summoner:{n:'소환사',a:4,d:3,s:4,k:'i',c:'#668'},assassin:{n:'어쌔신',a:4,d:3,s:4,k:'d',k2:'s',c:'#939'},dragon:{n:'용의 신궁',a:4,d:3,s:4,k:'d',k2:'s',c:'#fc4'},naturist:{n:'자연술사',a:3,d:4,s:4,k:'i',c:'#4a9'}};
 const CP={hunter:{c:'#3d8a3d',d:'#276027',l:'#6cc06c'},assassin:{c:'#6a3d8a',d:'#432660',l:'#9a6cc0'},warrior:{c:'#b8402a',d:'#7c2a1a',l:'#e06a4a'},mage:{c:'#2f5fd0',d:'#1e3c8c',l:'#6a9af0'},summoner:{c:'#555a78',d:'#363954',l:'#8a90b8'},naturist:{c:'#3e8f6a',d:'#245a40',l:'#7fd1a0'},dragon:{c:'#d9a62a',d:'#8a6a14',l:'#ffe27a'}};
 const SA={mage:'iiiii',warrior:'sssss',assassin:'ddddd',summoner:'hhhnh',dragon:'DDDDD',naturist:'iiiii'},sbk=(n,i,c)=>{const k=(SA[n]||'ccccc')[i];return k=='n'?1:k=='D'?1+.0175*(G.stat.d+G.stat.s):k=='c'?sb(c):1+.035*G.stat[k]},sb=c=>1+(c.k2?.03*(G.stat[c.k]+G.stat[c.k2]):.035*G.stat[c.k]);const ST={s:'힘',d:'민첩',i:'지능',h:'체력'};
