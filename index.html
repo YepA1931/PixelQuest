@@ -2432,7 +2432,7 @@ function bFall(e){const a0=e.x;BO.push({x:e.x,y:GB+30,l:3.4,tm:0,up:(o,dt)=>{o.t
 /* ===== CONTROLLER ===== */
 function bAct(e){if(e.busy>0||e.air){e.bt=.25;return}const L=BKS[e.bk];if(!L)return;const d=bzd(e,btg(e)),ok=s=>(!s.c||s.c(e,d))&&!(s.cd&&e.cdt&&e.cdt[s.id]>G.t);let c=L.filter(s=>ok(s)&&s.id!=e.la);if(!c.length)c=L.filter(ok);if(!c.length){e.bt=.8;return}
  let tw=0;for(const s of c)tw+=s.w||1;let r=R()*tw,s=c[0];for(const x of c){r-=x.w||1;if(r<=0){s=x;break}}
- e.la=s.id;const ccs=s.n=='발굽 충격'||s.n=='석화의 시선'||s.n=='얼음의 숨결',fq=ccs?1:1/1.2;if(s.cd)(e.cdt=e.cdt||{})[s.id]=G.t+s.cd*fq;bsay(e,s.n);const du=s.f(e)||.8;e.busy=Math.max(e.busy||0,du);e.bt=((GAP[e.bk]||2.2)*.5+du*.4)*fq}
+ e.la=s.id;const ccs=s.n=='발굽 충격'||s.n=='석화의 시선'||s.n=='얼음의 숨결',fq=ccs?1:1/1.1;if(s.cd)(e.cdt=e.cdt||{})[s.id]=G.t+s.cd*fq;bsay(e,s.n);const du=s.f(e)||.8;e.busy=Math.max(e.busy||0,du);e.bt=((GAP[e.bk]||2.2)*.5+du*.4)*fq}
 function bTick(e,dt){e.busy=(e.busy||0)-dt;e.ba=(e.ba==null?1+R():e.ba)-dt;if(e.fz>0){e.fz-=dt;if(e.fz<=0)e.rs=0}
  const tg=btg(e),d=bzd(e,tg),kp=KEEP[e.bk];let mm=1,inr=false;
  if(kp){inr=d<RNG[e.bk];mm=d<kp*.75?-.9:d<kp?0:1}else{inr=Math.abs(e.x-tg.x)<e.w*.5+(e.bk=='medusa3'?44:26)&&Math.abs(e.y-tg.y)<22;if(inr)mm=0}
