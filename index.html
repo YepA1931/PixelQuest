@@ -2343,7 +2343,7 @@ function bTri(e){e.bs=G.t;for(let i=0;i<5;i++)sch(.3+i*.13,()=>{if(e.dead||e.sn>
 function bTri3(e){for(let i=0;i<3;i++)sch(.2+i*.3,()=>{if(e.dead)return;e.bs=G.t-.3;e.x+=e.f*10;bMel(e,e.w*.7,28,e.d*.65,.15)})}
 const TRG=['255,136,51','136,221,255','255,238,68'],TRB=['255,205,150','205,240,255','255,250,175'],tEs=u=>1-Math.pow(1-u,2.2),tRn=n=>{const s=Math.sin(n*127.1+311.7)*43758.5453;return s-Math.floor(s)};
 const tWR=(k,u)=>10+tEs(u)*(190+(k%3)*12+tRn(k)*20);
-function tide(e){const o0={x:e.x,y:e.y,l:3.7,t0:G.t,e,dm:e.d*.55,hit:[],s:0,up:tideUp,dr:o=>tideDraw(o,o.front)};BO.push({...o0,y:e.y-4,front:0,up:null});BO.push({...o0,y:e.y+4,front:1})}
+function tide(e){const o0={x:e.x,y:e.y,l:3.7,t0:G.t,e,dm:e.d*.7,hit:[],s:0,up:tideUp,dr:o=>tideDraw(o,o.front)};BO.push({...o0,y:e.y-4,front:0,up:null});BO.push({...o0,y:e.y+4,front:1})}
 function tideUp(o,dt){const t=G.t-o.t0;if(!o.s&&t>=.2){o.s=1;SH=Math.max(SH,6);sfx('boom')}for(let k=0;k<9;k++){const d=t-(.3+k*.19);if(d>=0&&d<.1)SH=Math.max(SH,5);const u=d/1.5;if(u>0&&u<1&&!o.hit[k]){const R=tWR(k,u),q=Math.hypot(P.x-o.x,(P.y-o.y)*2);if(q<R&&q>R-46&&bdm(o.dm,'e',o.e,.4))o.hit[k]=1}}}
 function tideDraw(o,fr){const t=G.t-o.t0,e=o.e,X=o.x,Y=o.y,PI=Math.PI,Pt=(an,r,z)=>[X+Math.cos(an)*r,Y+Math.sin(an)*r*.5-z],half=an=>(Math.sin(an)>=0)===!!fr;
 g.save();g.globalCompositeOperation='lighter';
