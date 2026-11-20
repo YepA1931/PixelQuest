@@ -2636,7 +2636,7 @@ hades2:[
  {id:'bliz',n:'블리자드',w:1.2,f:e=>{e.bs=G.t;bBliz(e,3.6);return 3.4}}]
 };
 {const ty=id=>BKS.typhon.find(s=>s.id==id);BKS.hades=BKS.hades.filter(s=>s.id!='bliz'&&s.id!='drain').concat(['met','bolt','ice'].map(ty))}
-const GAP={centaur:2.4,spider:2.4,colossus:2.6,minotaur:3,medusa:2.4,medusa2:2.4,medusa3:2.4,hydra:2.4,typhon:2.6,hades:2.6,hades2:2.6};
+const GAP={centaur:2.4,spider:2.4,colossus:2.6,minotaur:3,medusa:2.4,medusa2:2.4,medusa3:2.4,hydra:2.4,typhon:2.8,hades:2.8,hades2:2.8};
 function bFall(e){const a0=e.x;BO.push({x:e.x,y:GB+30,l:3.4,tm:0,up:(o,dt)=>{o.tm+=dt;const t=o.tm;if(t<.8){e.air=1;e.zo=380*ease(t/.8);o.ex=e.x}else if(t<1.95){e.air=1;e.zo=420;if(t<1.5){o.tx=P.x;o.ty=P.y}}else if(t<2.2){e.air=1;if(!o.s){o.s=1;e.x=o.tx;e.y=o.ty;e.f=P.x>=e.x?1:-1}e.zo=420*(1-ease((t-1.95)/.25))}else if(!o.h){o.h=1;e.air=0;e.zo=0;e.bs=G.t-.45;SH=Math.max(SH,10);sfx('boom');quake(e.x,e.y,66);FX.push({x:e.x,y:e.y,r:58,l:.3,m:.3,c:'#fa6'});bhitR(e.x,e.y,58,e.d*2,'m',e,.4)}if(e.dead)o.l=0},
  dr:o=>{const t=o.tm;g.save();if(t<2.2){g.strokeStyle='rgba(240,240,255,.55)';g.lineWidth=1;g.beginPath();const bx=t<1.95?o.ex||e.x:e.x;g.moveTo(bx,(t<1.95?e.y:o.ty)-(e.zo||0)-e.h*.5);g.lineTo(bx,-60);g.stroke()}
  if(o.tx!=null&&t>.8&&t<2.2){const u=Math.min(1,(t-.8)/.7);g.globalAlpha=.25+.25*u;g.fillStyle='#f33';g.beginPath();g.ellipse(o.tx,o.ty,58*u,29*u,0,0,7);g.fill();g.globalAlpha=.9;g.strokeStyle='#f66';g.lineWidth=2;g.beginPath();g.ellipse(o.tx,o.ty,58,29,0,0,7);g.stroke()}g.restore()}});}
