@@ -1937,15 +1937,16 @@ MP.sendCast=function(n){if(MP.tp)MP.tp.send(0,{t:'cast',n})};
 MP.sync=function(){if(!MP.guest||!MP.tp)return;MP.tp.send(0,{t:'build',b:{cls:G.cls,stat:G.stat,pk:G.pk,sl:G.sl,sp:G.sp,kp:G.kp}})};
 // ---- 직렬화 (함수/엔티티 참조 제거) ----
 MP.DROP={tg:1,tk:1,src:1,h:1,own:1,last:1,seen:1,hit:1,up:1,dr:1,cb:1,f:1};
-MP.ser=function(v,d){if(v==null)return v;const t=typeof v;if(t=='number')return Number.isFinite(v)?Math.round(v*100)/100:0;if(t=='function'||t=='symbol')return undefined;if(t!='object')return v;if(d>4)return undefined;
+MP.ser=function(v,d){if(v==null)return v;const t=typeof v;if(t=='number')return Number.isFinite(v)?(Math.abs(v)<10?Math.round(v*100)/100:Math.round(v*10)/10):0;if(t=='function'||t=='symbol')return undefined;if(t!='object')return v;if(d>4)return undefined;
  if(Array.isArray(v)){const a=[];for(let i=0;i<v.length;i++){const x=MP.ser(v[i],d+1);a.push(x===undefined?null:x)}return a}
  if(v instanceof Map||v instanceof Set||(typeof Node!='undefined'&&v instanceof Node)||v.getContext)return undefined;
  const o={};for(const k in v){if(MP.DROP[k]&&typeof v[k]!='number')continue;const x=MP.ser(v[k],d+1);if(x!==undefined)o[k]=x}return o};
 MP.tag=function(a){for(const o of a)if(o&&typeof o=='object'&&!o._i)o._i=++MP.seq;return a};
-MP.snap=function(){const w={};for(const k of['stage','kills','goal','boss','clr','rush','bmh','brm','ba','bossCine','pil','t'])w[k]=MP.ser(G[k],0);
+MP.prim=function(o){if(!o||typeof o!='object')return o;const r={};for(const k in o){const v=o[k];if(v==null||typeof v=='object'||typeof v=='function')continue;r[k]=v}return r};
+MP.snap=function(lite){const w={};for(const k of['stage','kills','goal','boss','clr','rush','bmh','brm','ba','bossCine','pil','t'])w[k]=MP.ser(G[k],0);
  const pe=(id,p,b)=>({id,P:MP.ser(p,0),b:{cls:b.cls,lv:b.lv,xp:b.xp,cd:b.cd,cm:b.cm}});
  const pl=[pe(0,P,G)];for(const c of MP.rem)pl.push(pe(c.id,c.P,c.b));
- return {t:'snap',w,cam,SH,pl,E:MP.ser(MP.tag(E),0),AL:MP.ser(MP.tag(AL),0),PR:MP.ser(MP.tag(PR),0),FX:MP.ser(FX,0),PT:MP.ser(PT,0),DN:MP.ser(DN,0),ZN:MP.ser(ZN,0),BO:MP.ser(BO,0),EP:MP.ser(EP,0),THB:MP.ser(THB,0),DC:MP.ser(DC,0)}};
+ return {t:'snap',w,cam,SH,pl,E:MP.ser(MP.tag(E),0),AL:MP.ser(MP.tag(AL).slice(-30),0),PR:MP.ser(MP.tag(PR.slice(-(lite?100:220)).map(p=>({...p,o:MP.prim(p.o),h:0,dm:0,tg:0,tk:0,tr:p.tr&&p.tr.slice(-12)}))),0),FX:MP.ser(FX.slice(-(lite?60:150)),0),PT:lite?[]:MP.ser(PT.slice(-110),0),DN:MP.ser(DN.slice(-16),0),ZN:MP.ser(ZN,0),BO:MP.ser(BO,0),EP:MP.ser(EP,0),THB:MP.ser(THB,0),DC:MP.ser(DC,0)}};
 MP.bdr=function(o){g.save();g.globalCompositeOperation='lighter';const y=o.y-(o.z||0)-4,r=Math.max(3,o.r||o.hz||4);g.fillStyle=o.c||'#ff6a4a';g.globalAlpha=.35;g.beginPath();g.arc(o.x,y,r*2,0,7);g.fill();g.globalAlpha=.95;g.beginPath();g.arc(o.x,y,r,0,7);g.fill();g.fillStyle='#fff';g.beginPath();g.arc(o.x,y,r*.45,0,7);g.fill();g.restore()};
 // ---- 게스트: 스냅샷 적용/보간 ----
 MP.smo=function(k,arr){const old=MP.sm[k]||new Map(),nw=new Map();const out=arr.map(o=>{const p=old.get(o._i);if(p){o._tx=o.x;o._ty=o.y;o.x=p.x;o.y=p.y}nw.set(o._i,o);return o});MP.sm[k]=nw;return out};
@@ -1969,11 +1970,17 @@ MP.dl=function(){if(!MP.on)return[[P.y,dP]];
 MP.bars=function(){const L=MP.guest?MP.pls.map(q=>({id:q.id,P:q.P,cls:q.b.cls})):MP.list().map(q=>({id:q.c?q.c.id:0,P:q.P,cls:q.c?q.c.b.cls:G.cls}));if(L.length<2)return;g.save();g.font='bold 8px monospace';g.textBaseline='middle';
  L.forEach((q,i)=>{const x=W-76,y=34+i*11,r=Math.max(0,Math.min(1,q.P.hp/Math.max(1,q.P.mhp)));g.fillStyle='rgba(0,0,0,.5)';g.fillRect(x-1,y-4,72,9);g.fillStyle=MP.cols[q.id%4];g.textAlign='left';g.fillText(MP.names[q.id%4],x+1,y);g.fillStyle='#400';g.fillRect(x+16,y-2,50,5);g.fillStyle=q.P.dead?'#555':'#4e4';g.fillRect(x+16,y-2,50*r,5)});g.restore()};
 // ---- 프레임 훅 ----
-MP.after=function(dt){if(!MP.on)return;MP.bars();const now=performance.now();
- if(MP.host){if(MP.tp&&MP.rem.length&&now-MP.snapT>66){MP.snapT=now;const s=JSON.stringify(MP.snap());for(const c of MP.rem)MP.tp.sendRaw(c.id,s)}}
+MP.dbg={rx:0,tx:0,kb:0,last:0,err:''};
+MP.after=function(dt){if(!MP.on)return;MP.bars();MP.dbgDraw();const now=performance.now();
+ if(MP.host){if(MP.tp&&MP.rem.length&&now-MP.snapT>80){MP.snapT=now;try{let s=JSON.stringify(MP.snap());if(s.length>60000)s=JSON.stringify(MP.snap(1));MP.dbg.tx++;MP.dbg.kb=s.length/1000;for(const c of MP.rem)MP.tp.sendRaw(c.id,s)}catch(e){MP.dbg.err='snap:'+e.message}}}
  else if(MP.guest&&MP.tp){if(G.menu){K.ax=K.ay=K.l=K.r=K.u=K.d=K.j=0}const sig=[K.ax.toFixed(2),K.ay.toFixed(2),K.l,K.r,K.u,K.d,K.j].join();if(sig!=MP.lastIn||now-MP.inT>150){MP.lastIn=sig;MP.inT=now;MP.tp.send(0,{t:'in',ax:+K.ax.toFixed(2),ay:+K.ay.toFixed(2),l:K.l,r:K.r,u:K.u,d:K.d,j:K.j})}}};
+MP.dbgDraw=function(){if(!MP.started)return;const d=MP.dbg;g.save();g.font='7px monospace';g.textAlign='left';g.fillStyle='rgba(0,0,0,.5)';g.fillRect(2,H-12,200,9);g.fillStyle=d.err?'#f88':'#9cf';
+ const t=MP.guest?'rx '+d.rx+' '+(d.last?((performance.now()-d.last)/1000).toFixed(1)+'s':'-')+(MP.sn?'':' 대기')+(d.err?' ERR '+d.err.slice(0,40):''):'tx '+d.tx+' '+d.kb.toFixed(0)+'KB p'+MP.rem.length+(d.err?' ERR '+d.err.slice(0,40):'');g.fillText(t,4,H-5);g.restore()};
 // ---- 수신 ----
-MP.onMsg=function(id,m){if(typeof m=='string'){try{m=JSON.parse(m)}catch(e){return}}if(!m||!m.t)return;
+MP.onMsg=function(id,m){try{MP.onMsg0(id,m)}catch(e){MP.dbg.err=(e&&e.message)||String(e);console.error('mp',e)}};
+MP.onMsg0=function(id,m){if(typeof m=='string'){try{m=JSON.parse(m)}catch(e){return}}if(!m||!m.t)return;
+ if(m.t=='ch'){const a=MP.chs||(MP.chs={});if(a.sid!=m.s){a.sid=m.s;a.p=[];a.n=0}if(a.p[m.i]===undefined){a.p[m.i]=m.d;a.n++}if(a.n==m.n){const full=a.p.join('');a.p=[];a.n=0;a.sid=null;MP.onMsg0(id,full)}return}
+ if(!MP.host&&m.t=='snap'){MP.dbg.rx++;MP.dbg.last=performance.now()}
  if(MP.host){const c=MP.rem.find(c=>c.id==id);if(!c)return;
   if(m.t=='in'){Object.assign(c.K,{ax:m.ax||0,ay:m.ay||0,l:m.l||0,r:m.r||0,u:m.u||0,d:m.d||0,j:m.j||0})}
   else if(m.t=='cast'){if(MP.started&&G.menu!='clr'&&G.menu!='dead'&&G.menu!='act'){const gm=G.menu;G.menu=0;try{MP.run(c,()=>cast(m.n))}finally{G.menu=gm}}}
@@ -2011,15 +2018,15 @@ MP.tpPeer=function(){const T={peer:null,conns:{},n:0};
  T.host=(code,ok,bad)=>{const p=T.peer=new Peer('pqm-'+code,{debug:0});p.on('open',()=>ok(code));p.on('error',e=>{if(e&&e.type=='unavailable-id'){p.destroy();T.host(MP.code4(),ok,bad)}else bad('연결 오류: '+(e&&e.type||e))});
   p.on('connection',conn=>{const id=++T.n;T.conns[id]=conn;conn.on('open',()=>{hook(conn,id);MP.onJoin(id)})})};
  T.join=(code,ok,bad)=>{const p=T.peer=new Peer();p.on('error',e=>bad(e&&e.type=='peer-unavailable'?'그 코드의 방이 없어요':'연결 오류: '+(e&&e.type||e)));
-  p.on('open',()=>{const conn=p.connect('pqm-'+code,{reliable:true});T.conns[0]=conn;conn.on('open',()=>{hook(conn,0);ok()});setTimeout(()=>{if(!conn.open)bad('연결 시간 초과 (같은 코드인지 확인)')},12000)})};
- T.send=(id,m)=>{const c=T.conns[id];if(c&&c.open)c.send(JSON.stringify(m))};
- T.sendRaw=(id,s)=>{const c=T.conns[id];if(c&&c.open){const b=c.dataChannel&&c.dataChannel.bufferedAmount;if(b&&b>300000)return;c.send(s)}};
+  p.on('open',()=>{const conn=p.connect('pqm-'+code,{reliable:true,serialization:'json'});T.conns[0]=conn;conn.on('open',()=>{hook(conn,0);ok()});setTimeout(()=>{if(!conn.open)bad('연결 시간 초과 (같은 코드인지 확인)')},12000)})};
+ T.sq=0;T.send=(id,m)=>{const c=T.conns[id];if(c&&c.open)c.send(m)};
+ T.sendRaw=(id,s)=>{const c=T.conns[id];if(!c||!c.open)return;const b=c.dataChannel&&c.dataChannel.bufferedAmount;if(b&&b>150000)return;const L=7000;if(s.length<=L){c.send(s);return}const sid=++T.sq,n=Math.ceil(s.length/L);for(let i=0;i<n;i++)c.send({t:'ch',s:sid,i,n,d:s.slice(i*L,(i+1)*L)})};
  T.close=id=>{if(id!=null){const c=T.conns[id];if(c)c.close();return}try{T.peer&&T.peer.destroy()}catch(e){}};return T};
 // 테스트용 루프백 (두 창을 바깥 스크립트가 이어줌)
 MP.tpLoop=function(){const T={};T.recv=(from,s)=>{const m=typeof s=='string'?JSON.parse(s):s;if(m.t=='_open'){MP.onJoin(from)}else if(m.t=='_close')MP.onClose(from);else MP.onMsg(from,s)};
  const out=(to,s)=>window.__mpOut&&window.__mpOut(to,typeof s=='string'?s:JSON.stringify(s));
  T.host=(code,ok)=>{setTimeout(()=>ok(code),0)};T.join=(code,ok)=>{setTimeout(()=>{out(0,{t:'_open'});ok()},0)};
- T.send=(id,m)=>out(id,m);T.sendRaw=(id,s)=>out(id,s);T.close=()=>{};return T};
+ T.sq=0;T.send=(id,m)=>out(id,m);T.sendRaw=(id,s)=>{const L=7000;if(s.length<=L){out(id,s);return}const sid=++T.sq,n=Math.ceil(s.length/L);for(let i=0;i<n;i++)out(id,{t:'ch',s:sid,i,n,d:s.slice(i*L,(i+1)*L)})};T.close=()=>{};return T};
 
 
 const $=s=>document.querySelector(s),R=Math.random,W=400,H=400,GT=170,GB=386,WW=1600;
