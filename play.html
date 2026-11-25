@@ -161,7 +161,7 @@ body:not(.prac) .sk.x{display:none}body.prac #js{display:none}body.prac #sg{grid
 <script>
 (function(){var u=navigator.userAgent||'',m=/Android|iPhone|iPad|iPod|Mobile|Silk/i.test(u)||(navigator.maxTouchPoints>1&&/Macintosh/.test(u))||(matchMedia&&matchMedia('(pointer:coarse)').matches&&matchMedia('(hover:none)').matches);
 if(m||/[?&]dev(=|&|$)/.test(location.search))return;
-document.body.innerHTML='<div style="position:fixed;inset:0;overflow:auto;background:#0f0f17;color:#e8e8f0;font-family:system-ui,sans-serif;text-align:center;padding:40px 20px;box-sizing:border-box"><div style="max-width:520px;margin:0 auto"><div style="font-size:56px">📱</div><h1 style="font-size:26px;margin:10px 0">픽셀퀘스트</h1><p style="font-size:18px;color:#ffd34a;font-weight:700;margin:6px 0 18px">모바일 전용 게임이에요</p><p style="line-height:1.7;opacity:.85">휴대폰이나 태블릿의 브라우저에서 아래 주소로 접속해 주세요.</p><p style="background:#1b1b2a;border-radius:10px;padding:12px;word-break:break-all;font-size:15px;margin:14px 0">'+location.origin+location.pathname+'</p><hr style="border:0;border-top:1px solid #333;margin:26px 0"><div style="text-align:left;line-height:1.75;font-size:14px;opacity:.85"><b style="font-size:16px">게임 소개</b><br>픽셀 도트 감성의 횡스크롤 액션 RPG입니다. 몰려오는 몬스터를 처치하며 성장하고, 15개 스테이지를 돌파하고 2·4·6·8·10·12·14·15 스테이지의 보스 8마리를 쓰러뜨리세요.<br><br>· 6개 직업: 법사, 전사, 소환사, 어쌔신, 용의 신궁, 자연술사<br>· 레벨 1에 첫 직업을, 레벨 4에 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용<br>· 스테이지가 오르면 A급, S급 스킬이 열리는 성장 구조<br>· 터치 조이스틱과 스킬 버튼으로 간편하게 조작</div></div></div>';
+document.body.innerHTML='<div style="position:fixed;inset:0;overflow:auto;background:#0f0f17;color:#e8e8f0;font-family:system-ui,sans-serif;text-align:center;padding:40px 20px;box-sizing:border-box"><div style="max-width:520px;margin:0 auto"><div style="font-size:56px">📱</div><h1 style="font-size:26px;margin:10px 0">픽셀퀘스트</h1><p style="font-size:18px;color:#ffd34a;font-weight:700;margin:6px 0 18px">모바일 전용 게임이에요</p><p style="line-height:1.7;opacity:.85">휴대폰이나 태블릿의 브라우저에서 아래 주소로 접속해 주세요.</p><p style="background:#1b1b2a;border-radius:10px;padding:12px;word-break:break-all;font-size:15px;margin:14px 0">'+location.origin+location.pathname+'</p><hr style="border:0;border-top:1px solid #333;margin:26px 0"><div style="text-align:left;line-height:1.75;font-size:14px;opacity:.85"><b style="font-size:16px">게임 소개</b><br>픽셀 도트 감성의 횡스크롤 액션 RPG입니다. 몰려오는 몬스터를 처치하며 성장하고, 15개 스테이지를 돌파하고 2·4·6·8·10·12·14·15 스테이지의 보스 8마리를 쓰러뜨리세요.<br><br>· 6개 직업: 법사, 전사, 소환사, 어쌔신, 용의 신궁, 자연술사<br>· 시작할 때 첫 직업을, 스테이지 1 클리어 후 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용<br>· 스테이지가 오르면 A급, S급 스킬이 열리는 성장 구조<br>· 터치 조이스틱과 스킬 버튼으로 간편하게 조작</div></div></div>';
 window.__NOMOBILE=1})();
 </script>
 
@@ -894,7 +894,7 @@ const I18N={en:[["2인 모드","Two-player mode"],["태블릿 하나로 마주 �
 ["공 +5% 체 +10% · ","Atk +5% HP +10% · "],
 ["예상 ","Est. "],
 ["(슬롯 가득)","(slots full)"],
-["🔒 둘째 직업 (레벨4)","🔒 Second class (Lv 4)"],
+["🔒 둘째 직업 (스테이지 2)","🔒 Second class (Stage 2)"],
 ["확인","OK"],
 ["참격","Slash"],
 ["휠윈드","Whirlwind"],
@@ -1034,13 +1034,13 @@ const I18N={en:[["2인 모드","Two-player mode"],["태블릿 하나로 마주 �
 ["게임 소개","About the Game"],
 ["픽셀 도트 감성의 횡스크롤 액션 RPG입니다. 몰려오는 몬스터를 처치하며 성장하고, 15개 스테이지를 돌파하고 2·4·6·8·10·12·14·15 스테이지의 보스 8마리를 쓰러뜨리세요.","A pixel-art side-scrolling action RPG. Grow by defeating swarming monsters, clear 15 stages, and slay the 8 bosses of stages 2, 4, 6, 8, 10, 12, 14 and 15."],
 ["· 6개 직업: 법사, 전사, 소환사, 어쌔신, 용의 신궁, 자연술사","· 6 classes: Mage, Warrior, Summoner, Assassin, Dragon Archer, Druid"],
-["· 레벨 1에 첫 직업을, 레벨 4에 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· Pick a first class at Lv 1 and a second at Lv 4, and use both skill sets together"],
+["· 시작할 때 첫 직업을, 스테이지 1 클리어 후 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· Pick a first class at the start and a second after clearing Stage 1, and use both skill sets together"],
 ["· 스테이지가 오르면 A급, S급 스킬이 열리는 성장 구조","· A- and S-rank skills unlock as stages progress"],
 ["· 터치 조이스틱과 스킬 버튼으로 간편하게 조작","· Easy touch controls: joystick and skill buttons"],
 ["15개 스테이지를 돌파하세요. 몬스터를 처치하면 경험치를 얻고, 2·4·6·8·10·12·14·15 스테이지에는 보스가 등장합니다. 마지막 보스 하데스를 쓰러뜨리면 클리어!","Clear all 15 stages. Defeating monsters earns EXP, and a boss appears at stages 2, 4, 6, 8, 10, 12, 14 and 15. Defeat Hades, the final boss, to win!"],
 ["· 오른쪽 스킬 버튼 8개: 스킬 사용 (직업당 최대 4개 장착)","· 8 skill buttons on the right: use skills (up to 4 equipped per class)"],
-["· 상단의 [스탯 / 스킬] 버튼으로 성장 화면을 열 수 있어요.","· Open the growth screen with the [Stats / Skills] button at the top."],
-["· 레벨 1에 첫 직업, 레벨 4에 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· Pick your first class at Lv 1 and your second at Lv 4. You can use skills from both."],
+["· 레벨업으로 얻은 스탯·스킬 포인트는 스테이지를 클리어할 때 성장 화면에서 분배해요. 플레이 중에는 성장 화면을 열 수 없어요.","· Stat and skill points from level-ups are spent on the growth screen when you clear a stage. It cannot be opened during play."],
+["· 처음에 첫 직업을 고르고, 스테이지 1을 클리어하면 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· Pick your first class at the start and your second after clearing Stage 1. You can use skills from both."],
 ["· 법사 · 전사 · 소환사 · 어쌔신 · 용의 신궁 · 자연술사 (소환사와 자연술사는 함께 고를 수 없어요)","· Mage · Warrior · Summoner · Assassin · Dragon Archer · Druid (Summoner and Druid cannot be combined)"],
 ["· 직업마다 고유 버프가 있고, 고른 두 직업의 버프가 모두 적용돼요.","· Each class has its own buff, and the buffs of both chosen classes apply."],
 ["· 🎲 랜덤 버튼으로 직업을 무작위로 고를 수도 있어요.","· You can also pick a class at random with the 🎲 Random button."],
@@ -1100,7 +1100,7 @@ es:[["2인 모드","Modo 2 jugadores"],["태블릿 하나로 마주 보고 · �
 ["공 +5% 체 +10% · ","Atq +5% PV +10% · "],
 ["예상 ","Est. "],
 ["(슬롯 가득)","(casillas llenas)"],
-["🔒 둘째 직업 (레벨4)","🔒 Segunda clase (Nv 4)"],
+["🔒 둘째 직업 (스테이지 2)","🔒 Segunda clase (Etapa 2)"],
 ["확인","Aceptar"],
 ["참격","Tajo"],
 ["휠윈드","Torbellino"],
@@ -1240,13 +1240,13 @@ es:[["2인 모드","Modo 2 jugadores"],["태블릿 하나로 마주 보고 · �
 ["게임 소개","Sobre el juego"],
 ["픽셀 도트 감성의 횡스크롤 액션 RPG입니다. 몰려오는 몬스터를 처치하며 성장하고, 15개 스테이지를 돌파하고 2·4·6·8·10·12·14·15 스테이지의 보스 8마리를 쓰러뜨리세요.","Un RPG de acción de desplazamiento lateral en pixel art. Crece derrotando a hordas de monstruos, supera 15 etapas y acaba con los 8 jefes de las etapas 2, 4, 6, 8, 10, 12, 14 y 15."],
 ["· 6개 직업: 법사, 전사, 소환사, 어쌔신, 용의 신궁, 자연술사","· 6 clases: Mago, Guerrero, Invocador, Asesino, Arquero Dragón, Druida"],
-["· 레벨 1에 첫 직업을, 레벨 4에 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· Elige una primera clase en el Nv 1 y una segunda en el Nv 4, y usa ambos conjuntos de habilidades"],
+["· 시작할 때 첫 직업을, 스테이지 1 클리어 후 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· Elige una primera clase al empezar y una segunda al superar la Etapa 1, y usa ambos conjuntos de habilidades"],
 ["· 스테이지가 오르면 A급, S급 스킬이 열리는 성장 구조","· Las habilidades de rango A y S se desbloquean al avanzar de etapa"],
 ["· 터치 조이스틱과 스킬 버튼으로 간편하게 조작","· Controles táctiles sencillos: joystick y botones de habilidad"],
 ["15개 스테이지를 돌파하세요. 몬스터를 처치하면 경험치를 얻고, 2·4·6·8·10·12·14·15 스테이지에는 보스가 등장합니다. 마지막 보스 하데스를 쓰러뜨리면 클리어!","Supera las 15 etapas. Derrotar monstruos da EXP y en las etapas 2, 4, 6, 8, 10, 12, 14 y 15 aparece un jefe. ¡Derrota a Hades, el jefe final, para ganar!"],
 ["· 오른쪽 스킬 버튼 8개: 스킬 사용 (직업당 최대 4개 장착)","· 8 botones de habilidad a la derecha: usar habilidades (hasta 4 equipadas por clase)"],
-["· 상단의 [스탯 / 스킬] 버튼으로 성장 화면을 열 수 있어요.","· Abre la pantalla de progreso con el botón [Stats / Habilidades] de arriba."],
-["· 레벨 1에 첫 직업, 레벨 4에 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· Elige tu primera clase en el Nv 1 y la segunda en el Nv 4. Puedes usar las habilidades de ambas."],
+["· 레벨업으로 얻은 스탯·스킬 포인트는 스테이지를 클리어할 때 성장 화면에서 분배해요. 플레이 중에는 성장 화면을 열 수 없어요.","· Los puntos de atributo y habilidad de los niveles se gastan en la pantalla de progreso al superar una etapa. No se puede abrir durante el juego."],
+["· 처음에 첫 직업을 고르고, 스테이지 1을 클리어하면 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· Elige tu primera clase al empezar y la segunda al superar la Etapa 1. Puedes usar las habilidades de ambas."],
 ["· 법사 · 전사 · 소환사 · 어쌔신 · 용의 신궁 · 자연술사 (소환사와 자연술사는 함께 고를 수 없어요)","· Mago · Guerrero · Invocador · Asesino · Arquero Dragón · Druida (Invocador y Druida no se pueden combinar)"],
 ["· 직업마다 고유 버프가 있고, 고른 두 직업의 버프가 모두 적용돼요.","· Cada clase tiene un bonus propio y se aplican los de las dos clases elegidas."],
 ["· 🎲 랜덤 버튼으로 직업을 무작위로 고를 수도 있어요.","· También puedes elegir una clase al azar con el botón 🎲 Aleatorio."],
@@ -1306,7 +1306,7 @@ pt:[["2인 모드","Modo 2 jogadores"],["태블릿 하나로 마주 보고 · �
 ["공 +5% 체 +10% · ","Atq +5% PV +10% · "],
 ["예상 ","Est. "],
 ["(슬롯 가득)","(espaços cheios)"],
-["🔒 둘째 직업 (레벨4)","🔒 Segunda classe (Nv 4)"],
+["🔒 둘째 직업 (스테이지 2)","🔒 Segunda classe (Estágio 2)"],
 ["확인","OK"],
 ["참격","Golpe"],
 ["휠윈드","Redemoinho"],
@@ -1446,13 +1446,13 @@ pt:[["2인 모드","Modo 2 jogadores"],["태블릿 하나로 마주 보고 · �
 ["게임 소개","Sobre o jogo"],
 ["픽셀 도트 감성의 횡스크롤 액션 RPG입니다. 몰려오는 몬스터를 처치하며 성장하고, 15개 스테이지를 돌파하고 2·4·6·8·10·12·14·15 스테이지의 보스 8마리를 쓰러뜨리세요.","Um RPG de ação em pixel art com rolagem lateral. Evolua derrotando hordas de monstros, conclua 15 fases e derrote os 8 chefes das fases 2, 4, 6, 8, 10, 12, 14 e 15."],
 ["· 6개 직업: 법사, 전사, 소환사, 어쌔신, 용의 신궁, 자연술사","· 6 classes: Mago, Guerreiro, Invocador, Assassino, Arqueiro Dragão, Druida"],
-["· 레벨 1에 첫 직업을, 레벨 4에 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· Escolha a primeira classe no Nv 1 e a segunda no Nv 4, e use os dois conjuntos de habilidades"],
+["· 시작할 때 첫 직업을, 스테이지 1 클리어 후 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· Escolha a primeira classe no início e a segunda ao concluir o Estágio 1, e use os dois conjuntos de habilidades"],
 ["· 스테이지가 오르면 A급, S급 스킬이 열리는 성장 구조","· Habilidades de rank A e S são liberadas conforme você avança nas fases"],
 ["· 터치 조이스틱과 스킬 버튼으로 간편하게 조작","· Controles de toque simples: joystick e botões de habilidade"],
 ["15개 스테이지를 돌파하세요. 몬스터를 처치하면 경험치를 얻고, 2·4·6·8·10·12·14·15 스테이지에는 보스가 등장합니다. 마지막 보스 하데스를 쓰러뜨리면 클리어!","Conclua as 15 fases. Derrotar monstros dá EXP e um chefe aparece nas fases 2, 4, 6, 8, 10, 12, 14 e 15. Derrote Hades, o chefe final, para vencer!"],
 ["· 오른쪽 스킬 버튼 8개: 스킬 사용 (직업당 최대 4개 장착)","· 8 botões de habilidade à direita: usar habilidades (até 4 equipadas por classe)"],
-["· 상단의 [스탯 / 스킬] 버튼으로 성장 화면을 열 수 있어요.","· Abra a tela de progressão com o botão [Atributos / Habilidades] no topo."],
-["· 레벨 1에 첫 직업, 레벨 4에 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· Escolha a primeira classe no Nv 1 e a segunda no Nv 4. Você pode usar as habilidades de ambas."],
+["· 레벨업으로 얻은 스탯·스킬 포인트는 스테이지를 클리어할 때 성장 화면에서 분배해요. 플레이 중에는 성장 화면을 열 수 없어요.","· Os pontos de atributo e habilidade dos níveis são gastos na tela de progressão ao concluir um estágio. Ela não abre durante o jogo."],
+["· 처음에 첫 직업을 고르고, 스테이지 1을 클리어하면 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· Escolha a primeira classe no início e a segunda ao concluir o Estágio 1. Você pode usar as habilidades de ambas."],
 ["· 법사 · 전사 · 소환사 · 어쌔신 · 용의 신궁 · 자연술사 (소환사와 자연술사는 함께 고를 수 없어요)","· Mago · Guerreiro · Invocador · Assassino · Arqueiro Dragão · Druida (Invocador e Druida não podem ser combinados)"],
 ["· 직업마다 고유 버프가 있고, 고른 두 직업의 버프가 모두 적용돼요.","· Cada classe tem um bônus próprio, e os bônus das duas classes escolhidas se aplicam."],
 ["· 🎲 랜덤 버튼으로 직업을 무작위로 고를 수도 있어요.","· Você também pode escolher uma classe aleatória com o botão 🎲 Aleatório."],
@@ -1512,7 +1512,7 @@ ja:[["2인 모드","2人モード"],["태블릿 하나로 마주 보고 · 협�
 ["공 +5% 체 +10% · ","攻撃+5% HP+10% · "],
 ["예상 ","予想 "],
 ["(슬롯 가득)","（枠がいっぱい）"],
-["🔒 둘째 직업 (레벨4)","🔒 2つ目のクラス (Lv4)"],
+["🔒 둘째 직업 (스테이지 2)","🔒 2つ目のクラス (ステージ2)"],
 ["확인","OK"],
 ["참격","斬撃"],
 ["휠윈드","旋風斬"],
@@ -1652,13 +1652,13 @@ ja:[["2인 모드","2人モード"],["태블릿 하나로 마주 보고 · 협�
 ["게임 소개","ゲーム紹介"],
 ["픽셀 도트 감성의 횡스크롤 액션 RPG입니다. 몰려오는 몬스터를 처치하며 성장하고, 15개 스테이지를 돌파하고 2·4·6·8·10·12·14·15 스테이지의 보스 8마리를 쓰러뜨리세요.","ピクセルドット風の横スクロールアクションRPGです。押し寄せるモンスターを倒して成長し、15のステージを突破して、ステージ2・4・6・8・10・12・14・15のボス8体を倒しましょう。"],
 ["· 6개 직업: 법사, 전사, 소환사, 어쌔신, 용의 신궁, 자연술사","· 6つのクラス: 魔法使い、戦士、召喚士、アサシン、竜の神弓手、ドルイド"],
-["· 레벨 1에 첫 직업을, 레벨 4에 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· レベル1で最初のクラス、レベル4で2つ目のクラスを選び、両方のスキルを一緒に使用"],
+["· 시작할 때 첫 직업을, 스테이지 1 클리어 후 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· 最初にクラスを1つ選び、ステージ1クリア後に2つ目を選び、両方のスキルを一緒に使用"],
 ["· 스테이지가 오르면 A급, S급 스킬이 열리는 성장 구조","· ステージが進むとAランク・Sランクスキルが解放される成長システム"],
 ["· 터치 조이스틱과 스킬 버튼으로 간편하게 조작","· タッチジョイスティックとスキルボタンで簡単操作"],
 ["15개 스테이지를 돌파하세요. 몬스터를 처치하면 경험치를 얻고, 2·4·6·8·10·12·14·15 스테이지에는 보스가 등장합니다. 마지막 보스 하데스를 쓰러뜨리면 클리어!","15のステージを突破しましょう。モンスターを倒すと経験値を獲得でき、ステージ2・4・6・8・10・12・14・15ではボスが登場します。最後のボス、ハデスを倒せばクリア！"],
 ["· 오른쪽 스킬 버튼 8개: 스킬 사용 (직업당 최대 4개 장착)","· 右のスキルボタン8個: スキル使用（クラスごとに最大4つ装備）"],
-["· 상단의 [스탯 / 스킬] 버튼으로 성장 화면을 열 수 있어요.","· 上部の［ステータス / スキル］ボタンで成長画面を開けます。"],
-["· 레벨 1에 첫 직업, 레벨 4에 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· レベル1で最初のクラス、レベル4で2つ目のクラスを選びます。両方のクラスのスキルを同時に使えます。"],
+["· 레벨업으로 얻은 스탯·스킬 포인트는 스테이지를 클리어할 때 성장 화면에서 분배해요. 플레이 중에는 성장 화면을 열 수 없어요.","· レベルアップで得たステータス・スキルポイントは、ステージクリア時に成長画面で振り分けます。プレイ中は開けません。"],
+["· 처음에 첫 직업을 고르고, 스테이지 1을 클리어하면 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· 最初にクラスを1つ選び、ステージ1をクリアすると2つ目のクラスを選びます。両方のクラスのスキルを同時に使えます。"],
 ["· 법사 · 전사 · 소환사 · 어쌔신 · 용의 신궁 · 자연술사 (소환사와 자연술사는 함께 고를 수 없어요)","· 魔法使い · 戦士 · 召喚士 · アサシン · 竜の神弓手 · ドルイド（召喚士とドルイドは同時に選べません）"],
 ["· 직업마다 고유 버프가 있고, 고른 두 직업의 버프가 모두 적용돼요.","· クラスごとに固有のバフがあり、選んだ2つのクラスのバフがどちらも適用されます。"],
 ["· 🎲 랜덤 버튼으로 직업을 무작위로 고를 수도 있어요.","· 🎲 ランダムボタンでクラスをランダムに選ぶこともできます。"],
@@ -1718,7 +1718,7 @@ zh:[["2인 모드","双人模式"],["태블릿 하나로 마주 보고 · 협동
 ["공 +5% 체 +10% · ","攻+5% 体+10% · "],
 ["예상 ","预估 "],
 ["(슬롯 가득)","(栏位已满)"],
-["🔒 둘째 직업 (레벨4)","🔒 第二职业 (等级4)"],
+["🔒 둘째 직업 (스테이지 2)","🔒 第二职业 (第2关)"],
 ["확인","确认"],
 ["참격","斩击"],
 ["휠윈드","旋风斩"],
@@ -1859,13 +1859,13 @@ zh:[["2인 모드","双人模式"],["태블릿 하나로 마주 보고 · 협동
 ["게임 소개","游戏介绍"],
 ["픽셀 도트 감성의 횡스크롤 액션 RPG입니다. 몰려오는 몬스터를 처치하며 성장하고, 15개 스테이지를 돌파하고 2·4·6·8·10·12·14·15 스테이지의 보스 8마리를 쓰러뜨리세요.","这是一款像素点阵风格的横版动作RPG。击败蜂拥而来的怪物来成长，通关15个关卡，并击败第2·4·6·8·10·12·14·15关的8个Boss。"],
 ["· 6개 직업: 법사, 전사, 소환사, 어쌔신, 용의 신궁, 자연술사","· 6个职业: 法师、战士、召唤师、刺客、龙之神弓、自然术士"],
-["· 레벨 1에 첫 직업을, 레벨 4에 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· 1级选择第一职业，4级选择第二职业，并同时使用两个职业的技能"],
+["· 시작할 때 첫 직업을, 스테이지 1 클리어 후 두 번째 직업을 고르고 두 직업의 스킬을 함께 사용","· 开始时选择第一职业，通关第1关后选择第二职业，并同时使用两个职业的技能"],
 ["· 스테이지가 오르면 A급, S급 스킬이 열리는 성장 구조","· 随着关卡提升，A级、S级技能会逐步解锁的成长结构"],
 ["· 터치 조이스틱과 스킬 버튼으로 간편하게 조작","· 触控摇杆和技能按钮，操作简单便捷"],
 ["15개 스테이지를 돌파하세요. 몬스터를 처치하면 경험치를 얻고, 2·4·6·8·10·12·14·15 스테이지에는 보스가 등장합니다. 마지막 보스 하데스를 쓰러뜨리면 클리어!","通关15个关卡。击败怪物可获得经验值，第2·4·6·8·10·12·14·15关会出现Boss。击败最终Boss哈迪斯即可通关！"],
 ["· 오른쪽 스킬 버튼 8개: 스킬 사용 (직업당 최대 4개 장착)","· 右侧8个技能按钮: 使用技能 (每个职业最多装备4个)"],
-["· 상단의 [스탯 / 스킬] 버튼으로 성장 화면을 열 수 있어요.","· 可通过顶部的[属性 / 技能]按钮打开成长界面。"],
-["· 레벨 1에 첫 직업, 레벨 4에 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· 1级选择第一职业，4级选择第二职业。可同时使用两个职业的技能。"],
+["· 레벨업으로 얻은 스탯·스킬 포인트는 스테이지를 클리어할 때 성장 화면에서 분배해요. 플레이 중에는 성장 화면을 열 수 없어요.","· 升级获得的属性和技能点，在通关关卡时于成长界面分配。游戏进行中无法打开成长界面。"],
+["· 처음에 첫 직업을 고르고, 스테이지 1을 클리어하면 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.","· 开始时选择第一职业，通关第1关后选择第二职业。可同时使用两个职业的技能。"],
 ["· 법사 · 전사 · 소환사 · 어쌔신 · 용의 신궁 · 자연술사 (소환사와 자연술사는 함께 고를 수 없어요)","· 法师 · 战士 · 召唤师 · 刺客 · 龙之神弓 · 自然术士 (召唤师和自然术士不能同时选择)"],
 ["· 직업마다 고유 버프가 있고, 고른 두 직업의 버프가 모두 적용돼요.","· 每个职业都有专属增益，所选两个职业的增益会同时生效。"],
 ["· 🎲 랜덤 버튼으로 직업을 무작위로 고를 수도 있어요.","· 也可以用🎲随机按钮随机选择职业。"],
@@ -1916,12 +1916,12 @@ MP.run=function(c,fn){const hb={},ks=[];for(const k of MP.BK)if(c.b[k]!==undefin
 MP.hp=function(){return MP.H||P};
 MP.all=function(fn){const h=MP.hp(),p0=P;if(P!==h)P=h;try{fn()}finally{P=p0}if(MP.rem.length)for(const c of MP.rem.slice())MP.run(c,fn);MP.flush()};
 MP.cid=c=>c.cid||c.id;
-MP.flush=function(){for(const c of MP.rem)if(c.pc&&c.local){c.pc=0;c.pend=1}else if(c.pc){MP.send(MP.cid(c),{t:'lvup',lv:c.b.lv,sp:2*c.pc,kp:c.pc});c.pc=0}};
+MP.flush=function(){for(const c of MP.rem)if(c.pc&&c.local){c.pc=0}else if(c.pc){MP.send(MP.cid(c),{t:'lvup',lv:c.b.lv,sp:2*c.pc,kp:c.pc});c.pc=0}};
 MP.list=function(){const L=[{c:null,P:MP.hp()}];for(const c of MP.rem)L.push({c,P:c.P});return L};
 MP.near=function(o){if(!MP.rem.length)return MP.hp();let b=null,bd=1e9;for(const q of MP.list()){if(q.P.dead||(q.c&&q.c.off))continue;const d=Math.hypot(q.P.x-o.x,(q.P.y-o.y)*2);if(d<bd){bd=d;b=q.P}}return b||MP.hp()};
 MP.at=function(o,fn){if(!MP.rem.length||MP.cur)return fn();const p=MP.near(o);if(p===MP.hp())return fn();const c=MP.rem.find(c=>c.P===p);return c?MP.run(c,fn):fn()};
 MP.tg=function(fn){if(!MP.rem.length||MP.cur)return fn();const L=MP.list().filter(q=>!q.P.dead&&!(q.c&&q.c.off));if(L.length<2)return L.length&&L[0].c?MP.run(L[0].c,fn):fn();const q=L[R()*L.length|0];return q.c?MP.run(q.c,fn):fn()};
-MP.kp=function(n){G.kp+=n;for(const c of MP.rem){c.b.kp+=n;if(c.local)c.pend=1;else MP.send(MP.cid(c),{t:'lvup',sp:0,kp:n})}};
+MP.kp=function(n){G.kp+=n;for(const c of MP.rem){c.b.kp+=n;if(!c.local)MP.send(MP.cid(c),{t:'lvup',sp:0,kp:n})}};
 MP.cx=function(){if(!MP.rem.length)return MP.hp().x;let s=0,n=0;for(const q of MP.list())if(!q.P.dead&&!(q.c&&q.c.off)){s+=q.P.x;n++}if(!n)return MP.hp().x;return s/n};
 MP.clampP=function(){if(!MP.rem.length)return;for(const q of MP.list()){q.P.x=cl(q.P.x,cam+10,cam+W-10)}};
 MP.allDead=function(){return!!MP.hp().dead&&MP.rem.every(c=>c.P.dead)};
@@ -2065,7 +2065,7 @@ MP.beginMenu=function(c,t){MP.mc=c;menu(t)};
 MP.endMenu=function(){const c=MP.mc;if(!c)return;MP.mc=null;MP.run(c,()=>{recalc();if(!c.init&&c.b.cls.length){c.init=1;P.hp=P.mhp}if(P.hp>P.mhp)P.hp=P.mhp});if(c.b.cls.length&&!c.st1){c.st1=1;if(c.b.sp||c.b.kp)c.pend=1}};
 MP.wrap=f=>function(){if(!MP.mc||MP.inw)return f.apply(this,arguments);const c=MP.mc,pd=G.pend,a=arguments,s=this;MP.inw=1;try{MP.run(c,()=>f.apply(s,a))}finally{MP.inw=0}G.pend=pd;if(MP.mc&&!G.menu)MP.endMenu()};
 MP.geo=function(){const half=MP.local&&(G.menu=='lv'||G.menu=='c');const o=ov.style;if(half){o.left=o.right='0';if(MP.mc){o.top='0';o.bottom='58%';o.transform='rotate(180deg)'}else{o.top='42%';o.bottom='0';o.transform=''}}else{o.left=o.right=o.top=o.bottom=o.transform=''}ov.classList.toggle('half',half)};
-MP.lq=function(){if(!MP.local||!MP.loc||G.menu||MP.mc)return;const c=MP.loc;if(!c.b.cls.length||(c.b.lv>=MP.L2&&c.b.cls.length<2)){MP.beginMenu(c,'c')}else if(c.pend){c.pend=0;MP.beginMenu(c,'lv')}};
+MP.lq=function(){if(!MP.local||!MP.loc||G.menu||MP.mc)return;const c=MP.loc;if(!c.b.cls.length||(G.stage>=2&&c.b.cls.length<2)){MP.beginMenu(c,'c')}else if(c.pend){c.pend=0;MP.beginMenu(c,'lv')}};
 var ui0=ui;ui=function(){if(G.menu=='t'&&MP.local)MP.localStop();if(MP.mc&&G.menu!='lv'&&G.menu!='c')MP.mc=null;if(MP.mc&&!MP.inw){MP.inw=1;try{MP.run(MP.mc,ui0)}finally{MP.inw=0}}else ui0();MP.geo();if(MP.mc&&G.menu&&G.menu!='t'&&G.menu!='help')ov.insertAdjacentHTML('afterbegin','<div style="color:#9fe0ff;font-weight:800;margin-bottom:4px">▶ P2</div>')};
 var menu0=menu;menu=function(t){menu0(t);MP.geo()};up=MP.wrap(up);sk=MP.wrap(sk);pick=MP.wrap(pick);pickRand=MP.wrap(pickRand);closeM=MP.wrap(closeM);
 
@@ -2086,7 +2086,10 @@ MP.td=[];MP.tm=0;
 ['pointerdown','pointerup','pointercancel','lostpointercapture'].forEach(n=>window.addEventListener(n,e=>{if(!MP.local)return;const t=e.target,id=(t&&(t.id||(t.closest&&t.closest('#js2,#js,#ov,.sk')&&t.closest('#js2,#js,#ov,.sk').id)||t.tagName))||'?';MP.td.push(({pointerdown:'D',pointerup:'U',pointercancel:'C',lostpointercapture:'L'})[n]+e.pointerId%100+':'+id);if(MP.td.length>7)MP.td.shift()},true));
 window.addEventListener('pointermove',e=>{if(MP.local)MP.tm++},true);
 MP.tdDraw=function(){let d=document.getElementById('tdbg');if(!d){d=document.createElement('div');d.id='tdbg';d.style.cssText='position:fixed;left:0;top:0;z-index:99;font:10px monospace;color:#0f0;background:rgba(0,0,0,.6);padding:1px 4px;pointer-events:none;white-space:nowrap';document.body.appendChild(d)}
- d.textContent='2P11 menu:'+G.menu+' mc:'+(MP.mc?1:0)+' K1:'+K.ax.toFixed(1)+','+K.ay.toFixed(1)+' K2:'+MP.loc.K.ax.toFixed(1)+','+MP.loc.K.ay.toFixed(1)+' jid:'+jid+' mv:'+MP.tm+' | '+MP.td.join(' ')};
+ d.textContent='2P13 menu:'+G.menu+' mc:'+(MP.mc?1:0)+' K1:'+K.ax.toFixed(1)+','+K.ay.toFixed(1)+' K2:'+MP.loc.K.ax.toFixed(1)+','+MP.loc.K.ay.toFixed(1)+' jid:'+jid+' mv:'+MP.tm+' | '+MP.td.join(' ')};
+
+MP.pl=function(){if(MP.local&&MP.loc&&(MP.loc.b.sp||MP.loc.b.kp||G.stage==5||G.stage==10))MP.loc.pend=1};
+(function(){const st=document.createElement('style');st.textContent='body:not(.prac) #bs,.lb{display:none!important}';document.head.appendChild(st)})();
 
 
 const $=s=>document.querySelector(s),R=Math.random,W=400,H=400,GT=170,GB=386,WW=1600;
@@ -2330,7 +2333,7 @@ function nextDash(){if(!(P.dq>0))return;P.dq--;const t=near(P.x,P.y,520);let dx,
 function quake(x,y,r){SH=Math.max(SH,7);FX.push({x,y,crack:1,r,l:.9,m:.9,cr:Array.from({length:9},(_,i)=>i*.7+R()*.4)});sch(.12,()=>FX.push({x,y,r:r*1.15,l:.3,m:.3,c:'#fa5'}));for(let i=0;i<16;i++)PT.push({x:x+(R()-.5)*r,y:y+(R()-.5)*r*.3,vx:(R()-.5)*120,vy:-120-R()*140,l:.9,c:i%2?'#8a6a4a':'#cbb'})}
 function drop(x,y,d,o,ao,vt,z,fs,tk){const rs=o.rs||1,T=z/fs;if(vt!='i'&&vt!='a')FX.push({x,y,r:ao*rs,l:T,m:T,c:vt=='m'?'#f93':vt=='im'?'#8ef':vt=='pb'?'#8f3':'#eee',k:1});PR.push({x,y,z,fs,vx:0,vy:0,dm:d,l:T+1,r:2,c:'#fff',ao:ao*rs,o:{...o,rs:1},vt,h:[],tk})}
 const BN=['히드라','미라 왕 임호텝','셀케트','스콜로펜드라','에키드나','하데스의 망자왕','세파','스콜피온 킹','파이톤','타르타로스의 슬라임','아누비스','오리온의 전갈','아포피스','키마이라','티폰'];
-function gain(n){MP.all(()=>gain0(n))}function gain0(n){G.xp+=n;while(G.xp>=24){G.xp-=24;sfx('lvl');G.lv++;G.sp+=2;G.kp+=1;if(MP.cur)MP.cur.pc=(MP.cur.pc||0)+1;else G.pend=1;recalc();P.hp=Math.min(P.mhp,P.hp+P.mhp*.3)}}
+function gain(n){MP.all(()=>gain0(n))}function gain0(n){G.xp+=n;while(G.xp>=24){G.xp-=24;sfx('lvl');G.lv++;G.sp+=2;G.kp+=1;if(MP.cur)MP.cur.pc=(MP.cur.pc||0)+1;recalc();P.hp=Math.min(P.mhp,P.hp+P.mhp*.3)}}
 function spx(e,s,T){const av=MOBS.filter(m=>m.st<=s);if(av.length&&R()<Math.min(.9,.2+.05*(s-1))){let tw=0;av.forEach(m=>tw+=m.hp*(1+(s-m.st)*.1));let rr=R()*tw,m=av[av.length-1];for(const q of av){rr-=q.hp*(1+(s-q.st)*.1);if(rr<=0){m=q;break}}const b0=40.8*Math.pow(1.1,s-1),hp2=b0*m.hp*(1+(T.hp-1)*.3);Object.assign(e,{nm:m.nm,w:m.w,h:m.h,hp:hp2,mh:hp2,sp:(34+R()*24+s*3)*m.sp,d:7.2*Math.pow(1.1,s-1)*m.d*(1+(T.d-1)*.3),rg:m.rg||0,bz:m.bz||1,ms:m.ms||1,hh2:m.sz+6})}else if(e.k==0){e.w=Math.round(e.w*.6);e.h=Math.round(e.h*.6)}}
 function mk(x,y,t){const s=G.stage,T=TY[t],hp=([500,500,1000,1000,2000,2000,3500,3500,6000,6000,7500,7500,8500,8500,11200][s-1]||11200)*T.hp/6;E.push({x:cl(x,0,WW),y:cl(y,GT,GB),oy:(R()-.5)*30,w:T.w,h:T.h,hp,mh:hp,sp:(34+R()*24+s*3)*T.sp,d:7.2*1.1*Math.pow(1.1,s-1)*T.d,sn:0,sl:0,fl:0,c:0,t,k:[0,5][R()*2|0],f:1,rg:(G.sc=(G.sc||0)+1)%10>=7?1:0,rc:.2+R()*.7});spx(E[E.length-1],s,T);if((E[E.length-1].k==1||E[E.length-1].k==0)&&!E[E.length-1].nm)E[E.length-1].rg=0}
 const CHI=(function(){
@@ -2732,7 +2735,7 @@ function dBoss(e){let k=e.bk||(e.nm=='medusa'?'medusah':e.nm=='bronze'?'colossus
  const ag=e.t0!=null?Math.min(1,(G.t-e.t0)/1.2):1;g.save();g.translate(Math.round(e.x+lg*e.f*.6+shk),Math.round(e.y+2+(1-ag)*34-(e.zo||0)));g.scale(e.f,1);g.imageSmoothingEnabled=false;
  if(k=='hades'||k=='hades2'){const S2=k=='hades2',pu=.5+.5*Math.sin(G.t*3.2);BAU.width=o.width;BAU.height=o.height;const bx=BAU.getContext('2d');bx.globalCompositeOperation='source-over';bx.clearRect(0,0,o.width,o.height);bx.drawImage(o,0,0);bx.globalCompositeOperation='source-in';bx.fillStyle=S2?'#d8c8ff':'#5aa8ff';bx.fillRect(0,0,o.width,o.height);g.save();g.globalCompositeOperation='lighter';const gr=g.createRadialGradient(0,-e.h*.5,4,0,-e.h*.5,e.h*.95);if(S2){gr.addColorStop(0,'rgba(210,240,255,.7)');gr.addColorStop(.5,'rgba(160,120,255,.38)');gr.addColorStop(1,'rgba(120,80,255,0)')}else{gr.addColorStop(0,'rgba(90,160,255,.55)');gr.addColorStop(.55,'rgba(60,120,255,.28)');gr.addColorStop(1,'rgba(40,80,255,0)')}g.globalAlpha=.7+.3*pu;g.fillStyle=gr;g.fillRect(-e.h,-e.h*1.6,e.h*2,e.h*2.2);g.imageSmoothingEnabled=false;for(const [sc,al] of (S2?[[1.34,.12],[1.22,.2],[1.12,.32],[1.05,.45]]:[[1.28,.1],[1.18,.18],[1.1,.28],[1.04,.38]])){const w2=sz*sc,h2=sz*sc;g.globalAlpha=al*(.8+.2*pu);g.drawImage(BAU,ox-(w2-sz)/2,oy-(h2-sz)*.62,w2,h2)}if(S2){for(let i=0;i<18;i++){const u=((G.t*.55+i/18)%1),x=Math.sin(i*2.1+G.t*1.6+u*5)*e.w*.7,y=-u*e.h*1.25;g.globalAlpha=Math.sin(u*3.14)*.85;g.fillStyle=i%3==0?'#ffffff':i%3==1?'#bfeaff':'#c8a0ff';g.beginPath();g.ellipse(Math.round(x),Math.round(y),2.2,4.5+(i%3)*1.5,0,0,7);g.fill();g.globalAlpha*=.4;g.fillRect(Math.round(x)-1,Math.round(y)+3,2,9)}}else{for(let i=0;i<14;i++){const u=((G.t*.9+i/14)%1),x=Math.sin(i*2.4+G.t*2)*e.w*.55,y=-u*e.h*1.05;g.globalAlpha=(1-u)*.8;g.fillStyle=i%2?'#9fd0ff':'#4a8cff';g.fillRect(Math.round(x),Math.round(y),2,3+(i%3))}}g.restore();if(!S2){BAU.getContext('2d').globalCompositeOperation='source-over';const b2=BAU.getContext('2d');b2.clearRect(0,0,o.width,o.height);b2.drawImage(o,0,0);b2.globalCompositeOperation='source-in';b2.fillStyle='#050510';b2.fillRect(0,0,o.width,o.height);g.globalAlpha=.95;const d=Math.max(1,Math.round(cs*.9));for(const [dx,dy] of [[d,0],[-d,0],[0,d],[0,-d],[d,d],[-d,d],[d,-d],[-d,-d]])g.drawImage(BAU,ox+dx,oy+dy,sz,sz)}}g.globalAlpha=(e.sn>0?.8:1)*ag;if(hitF(e)){BFX.globalCompositeOperation='source-over';BFX.clearRect(0,0,BFL.width,BFL.height);BFX.drawImage(o,0,0);BFX.globalCompositeOperation='source-atop';BFX.fillStyle='rgba(0,0,0,.3)';BFX.fillRect(0,0,BFL.width,BFL.height);g.drawImage(BFL,ox,oy,sz,sz)}else g.drawImage(o,ox,oy,sz,sz);g.globalAlpha=1;
  g.restore()}
-function advance(){const a0=actOf();G.stage++;G.goal=Math.round(72*Math.pow(1.2,G.stage-1));G.kills=0;G.boss=0;if(G.stage==5||G.stage==10||G.kp)G.pend=1;P.hp=P.mhp;DN.push({x:cam+W/2,y:112,t:2.5,v:'STAGE '+G.stage});if(actOf()!=a0){G.actP=actOf()+1;G.ba=a0}save()}
+function advance(){const a0=actOf();G.stage++;G.goal=Math.round(72*Math.pow(1.2,G.stage-1));G.kills=0;G.boss=0;if(G.stage==5||G.stage==10||G.kp||G.sp)G.pend=1;MP.pl();P.hp=P.mhp;DN.push({x:cam+W/2,y:112,t:2.5,v:'STAGE '+G.stage});if(actOf()!=a0){G.actP=actOf()+1;G.ba=a0}save()}
 function spawnBoss(){const s=G.stage,B=BSS[s],hp0=40.8*1.1*Math.pow(1.25,s-1)*64*({2:2.7852,4:3.5651,6:4.5633,8:5.1109,10:6.5419,12:4.4859,14:3.2538,15:2.4499}[s]||2.5),z=B[2]*BCH,M=B[0]=='medusa',n=M?3:1,hp=hp0*(M?.5:1)*MP.hk();G.bmh=hp*n;G.bossCine={kind:'in',name:M?'메두사':B[1],key:B[0],at:G.t};for(let v=0;v<n;v++)E.push({x:cl(cam+W-40+(M?[0,-70,30][v]:0),0,WW-30),y:M?GT+(GB-GT)*[.5,.26,.74][v]:(GT+GB)/2,oy:0,w:Math.round(z*.8),h:Math.round(z),hp,mh:hp,sp:30+s*2,d:21.6*1.1*Math.pow(1.12,s-1)/n*(s>=14?.7:1),sn:0,sl:0,fl:0,c:0,t:3,k:1,f:-1,boss:1,name:M?['메두사(백)','스테노(황)','에우리알레(흑)'][v]:B[1],bk:M?['medusa','medusa2','medusa3'][v]:B[0],bz:B[2],bt:2+v*.5,ch:0});sfx('boss');try{navigator.vibrate&&navigator.vibrate(350)}catch(e){}DN.push({x:cam+W/2,y:90,t:2,v:'BOSS!'});DN.push({x:cam+W/2,y:106,t:2,v:B[1]});SH=10}
 function hades2(e){G.bossCine={kind:'phase',name:'하데스(영혼)',key:'hades2',at:G.t};BO=[];bRst();E.forEach(m=>{if(m!==e)m.dead=1});G.pil={x:e.x,y:e.y,t0:G.t,soul:1};SH=Math.max(SH,10);const hp=e.mh*.8;G.bmh=hp;sch(3.05,()=>{E.push({x:e.x,y:e.y,oy:0,w:e.w,h:e.h,hp,mh:hp,sp:e.sp*1.2,d:e.d*1.15,sn:0,sl:0,fl:0,c:0,t:3,k:1,f:e.f,boss:1,name:'하데스(영혼)',bk:'hades2',bz:2,soul:1,t0:G.t,bt:3,ch:0});sfx('boss');if(G.rush==2){G.rush=3;rushSouls()}DN.push({x:cam+W/2,y:90,t:2,v:'PHASE 2'});DN.push({x:cam+W/2,y:106,t:2,v:'하데스(영혼)'});SH=10})}
 function dPil(){const p=G.pil;if(!p)return;const a=G.t-p.t0;if(a>(p.soul?3.8:3)){G.pil=null;return}const x=p.x-cam,y=p.y;g.save();g.globalCompositeOperation='lighter';if(p.soul){const rise=Math.min(1,a/.95),fade=a>2.75?Math.max(0,1-(a-2.75)/1.05):1,h=260*rise,w=30+Math.sin(G.t*11)*5;
@@ -3223,21 +3226,21 @@ function langBack(){const p=G.lp;G.lp=0;if(p){G.menu=p;ui()}else closeM()}
 function closeM(){G.menu=0;ov.style.display='none';save();MP.sync()}
 function ui(){const t=G.menu;let h='';
 if(t=='lang'){h=`<h3>🌐 Language</h3>`+LANGS.map(l=>`<button class="m" onclick="setLang('${l[0]}')">${l[1]}${l[0]==LANG?' ✓':''}</button>`).join('')+`<button class="m" onclick="langBack()">←</button>`}else if(t=='mp'){h=MP.html()}else if(t=='c'){h=`<h3>${G.cls.length?'두번째':'첫'} 직업 선택</h3>`+Object.keys(CL).filter(c=>c!=G.cls[0]).map(c=>{const x=CL[c],lk=!!G.cls[0]&&((G.cls[0]=='summoner'&&c=='naturist')||(G.cls[0]=='naturist'&&c=='summoner'));return lk?`<button class="m" disabled style="opacity:.45">🔒 ${x.n}<small>${CL[G.cls[0]].n}와(과) 함께 선택 불가</small></button>`:`<button class="m" onclick="pick('${c}')">${x.n}<small>공격${x.a} 방어${x.d} 속도${x.s}</small></button>`}).join('')+`<button class="m" onclick="pickRand()">🎲 랜덤<small>아무 직업이나 골라줘</small></button>`}
-else if(t=='lv'){const ba=G.cls.length?Math.round(90*(1+.1*(G.lv-1))*sb(CL[G.cls[0]]))/10:0;h=`<h3>레벨 ${G.lv}</h3><p style="color:#ffd34a;font-weight:700">⚔ 공격력 ${ba}</p>${G.cls.map(c=>`<p style="font-size:12px;color:#8fd;margin:2px 0">✦ ${CL[c].n} 버프: ${BT[c]}</p>`).join('')}<p>스탯 ${G.sp}점 · 스킬 ${G.kp}점</p><p style="font-size:11px;opacity:.6;margin:0">예상 = 보스 1마리 기준 1회 사용 총 데미지 (지속시간 포함)</p><p style="font-size:12px;opacity:.7">스킬 칸: 직업당 3개(총 6) · 스테이지8에 4개(총 8) / 최대 스킬레벨 일반 ${smax()} (스테이지3→5 · 5→8 · 8→10) / A급: 스테이지5부터 (4→스테이지7:7→9:9→11:10) / S급: 스테이지10부터 (3→스테이지12:6→13:9→14:10) / 레벨업 스킬+1 · 스테이지 클리어 스킬+2</p>`+['s','d','i','h'].map(k=>`<div class="r"><span>${ST[k]} ${G.stat[k]}</span><button onclick="up('${k}')" ${G.sp?'':'disabled'}>+</button></div>`).join('')+[0,1,2,3,4,5,6,7,8,9].map(i=>{const g=i<5?0:1,c=G.cls[g],full=!G.sl[i]&&G.pk[g].length>=nsl(g),tl=c?TL[c][i%5]:'C',rq=rqOf(tl),lk=G.stage<rq;return c?`<div class="r"><span>[${CL[c].n}] <b style="color:${tl=='S'?'#ff8a4a':tl=='A'?'#a258ff':'#8aa'}">${tl}</b> ${SK[c][i%5][0]} Lv${G.sl[i]} ${lk?`<small style="color:#f66">🔒 스테이지${rq} 필요</small>`:''}<small style="color:#ffd34a;${lk?'display:none':''}">${SK[c][i%5][0]=='거인의 힘'?'공·체 ×1.5 · '+(9+Math.max(1,G.sl[i]))+'초':SK[c][i%5][0]=='전투깃발'?'공 +5% 체 +10% · 6초':'예상 '+Math.round(({C:2000,B:4000,A:6000,S:8000})[tl]*Math.max(1,G.sl[i])/10*(()=>{const so=G.stat,x=sbk(c,i%5,CL[c]);G.stat={s:5,d:5,i:5,h:5};const y=sbk(c,i%5,CL[c]);G.stat=so;return x/y})())}</small>${full?' (슬롯 가득)':''}</span><button onclick="sk(${i})" ${G.kp&&G.sl[i]<smaxI(i)&&!full&&!lk?'':'disabled'}>+</button></div>`:(i==5?`<div class="r"><span>🔒 둘째 직업 (레벨4)</span></div>`:'')}).join('')+`<button class="m" onclick="closeM()">확인</button>`}
+else if(t=='lv'){const ba=G.cls.length?Math.round(90*(1+.1*(G.lv-1))*sb(CL[G.cls[0]]))/10:0;h=`<h3>레벨 ${G.lv}</h3><p style="color:#ffd34a;font-weight:700">⚔ 공격력 ${ba}</p>${G.cls.map(c=>`<p style="font-size:12px;color:#8fd;margin:2px 0">✦ ${CL[c].n} 버프: ${BT[c]}</p>`).join('')}<p>스탯 ${G.sp}점 · 스킬 ${G.kp}점</p><p style="font-size:11px;opacity:.6;margin:0">예상 = 보스 1마리 기준 1회 사용 총 데미지 (지속시간 포함)</p><p style="font-size:12px;opacity:.7">스킬 칸: 직업당 3개(총 6) · 스테이지8에 4개(총 8) / 최대 스킬레벨 일반 ${smax()} (스테이지3→5 · 5→8 · 8→10) / A급: 스테이지5부터 (4→스테이지7:7→9:9→11:10) / S급: 스테이지10부터 (3→스테이지12:6→13:9→14:10) / 레벨업 스킬+1 · 스테이지 클리어 스킬+2</p>`+['s','d','i','h'].map(k=>`<div class="r"><span>${ST[k]} ${G.stat[k]}</span><button onclick="up('${k}')" ${G.sp?'':'disabled'}>+</button></div>`).join('')+[0,1,2,3,4,5,6,7,8,9].map(i=>{const g=i<5?0:1,c=G.cls[g],full=!G.sl[i]&&G.pk[g].length>=nsl(g),tl=c?TL[c][i%5]:'C',rq=rqOf(tl),lk=G.stage<rq;return c?`<div class="r"><span>[${CL[c].n}] <b style="color:${tl=='S'?'#ff8a4a':tl=='A'?'#a258ff':'#8aa'}">${tl}</b> ${SK[c][i%5][0]} Lv${G.sl[i]} ${lk?`<small style="color:#f66">🔒 스테이지${rq} 필요</small>`:''}<small style="color:#ffd34a;${lk?'display:none':''}">${SK[c][i%5][0]=='거인의 힘'?'공·체 ×1.5 · '+(9+Math.max(1,G.sl[i]))+'초':SK[c][i%5][0]=='전투깃발'?'공 +5% 체 +10% · 6초':'예상 '+Math.round(({C:2000,B:4000,A:6000,S:8000})[tl]*Math.max(1,G.sl[i])/10*(()=>{const so=G.stat,x=sbk(c,i%5,CL[c]);G.stat={s:5,d:5,i:5,h:5};const y=sbk(c,i%5,CL[c]);G.stat=so;return x/y})())}</small>${full?' (슬롯 가득)':''}</span><button onclick="sk(${i})" ${G.kp&&G.sl[i]<smaxI(i)&&!full&&!lk?'':'disabled'}>+</button></div>`:(i==5?`<div class="r"><span>🔒 둘째 직업 (스테이지 2)</span></div>`:'')}).join('')+`<button class="m" onclick="closeM()">확인</button>`}
 else if(t=='act'){const A=G.ap||0,AD=[['델파이','신탁의 땅. 평화로운 들판 너머로 괴물들이 모습을 드러낸다.','STAGE 1 ~ 4'],['미궁','횃불만이 길을 비추는 돌 미로. 어둠 속에서 거대한 그림자가 움직인다.','STAGE 5 ~ 8'],['아테네 가는 길','어두운 숲과 늪을 지나 아테네로. 메두사와 히드라가 길을 막아선다.','STAGE 9 ~ 12'],['하데스','불타오르는 올림포스의 폐허. 갈라진 신전 바닥 위에서 최후의 괴물이 기다린다.','STAGE 13 ~ 15']][A];h=`<div class="ttl" style="font-size:34px">ACT ${A+1}</div><h3 class="fi" style="animation-delay:.3s">${AD[0]}</h3><p class="fi" style="animation-delay:.9s;padding:0 14px">${AD[1]}</p><p class="fi" style="animation-delay:1.4s;color:#ffd34a">${AD[2]}</p><button class="m" onclick="G.ba=null;closeM()">계속</button>`}
 else if(t=='clr')h=`<h3>${G.stage>=15?'최후의 괴물 하데스가 쓰러졌다!':'스테이지 '+G.stage+' 클리어!'}</h3><p style="color:#ffd34a">스킬 포인트 +2</p><button class="m" onclick="nextS()">${G.stage>=15?'결과 보기':'다음 스테이지'}</button>`;
 else if(t=='dead')h=`<h3>쓰러졌다…</h3>${G.brm?'<p style="color:#ffd34a">스탯 +2 · 스킬 포인트 +1 (1레벨 분량)</p>':''}<button class="m" onclick="retry()">${G.brm?'포인트 찍고 재도전':'스테이지 재도전'}</button>`;
-else if(t=='help'){h=`<h3>게임 설명</h3><div class="hp"><b>목표</b><br>15개 스테이지를 돌파하세요. 몬스터를 처치하면 경험치를 얻고, 2·4·6·8·10·12·14·15 스테이지에는 보스가 등장합니다. 마지막 보스 하데스를 쓰러뜨리면 클리어!<br><br><b>조작</b><br>· 왼쪽 조이스틱: 이동<br>· 오른쪽 스킬 버튼 8개: 스킬 사용 (직업당 최대 4개 장착)<br>· 일반 공격은 가까운 적에게 자동으로 나갑니다.<br>· 상단의 [스탯 / 스킬] 버튼으로 성장 화면을 열 수 있어요.<br><br><b>직업 선택</b><br>· 레벨 1에 첫 직업, 레벨 4에 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.<br>· 법사 · 전사 · 소환사 · 어쌔신 · 용의 신궁 · 자연술사 (소환사와 자연술사는 함께 고를 수 없어요)<br>· 직업마다 고유 버프가 있고, 고른 두 직업의 버프가 모두 적용돼요.<br>· 🎲 랜덤 버튼으로 직업을 무작위로 고를 수도 있어요.<br><br><b>성장</b><br>· 레벨업: 스탯 포인트 +2, 스킬 포인트 +1, 체력 30% 회복<br>· 스테이지 클리어: 스킬 포인트 +2<br>· 시작할 때 스탯 포인트 5점과 스킬 포인트 6점을 드려요.<br>· 스킬 레벨을 올리면 범위·개수·위력이 강해집니다.<br>· 스킬 칸은 직업당 3개이고, 스테이지 8부터 4개로 늘어납니다.<br>· 데미지 스탯: 법사·소환사·자연술사는 지능+체력, 전사는 힘+체력, 어쌔신은 민첩+체력, 용의 신궁은 민첩+지능+체력 (소환사를 뺀 나머지는 체력 효과가 절반)<br><br><b>스킬 등급</b><br>· C·B급 스킬은 처음부터, A급은 스테이지 5, S급은 스테이지 10부터 배울 수 있어요.<br>· 스킬 최대 레벨은 스테이지가 오를수록 열립니다. (일반: 스테이지 3→5 · 5→8 · 8→10)<br>· A급 최대 레벨: 스테이지 5부터 4, 7부터 7, 9부터 9, 11부터 10<br>· S급 최대 레벨: 스테이지 10부터 3, 12부터 6, 13부터 9, 14부터 10<br><br><b>보스런</b><br>· 타이틀의 보스런을 고르면 보스 8마리에 이어 보스 총출동(일반 → 영혼) 2라운드까지, 총 10연전을 싸워요.<br>· 보스를 쓰러뜨릴 때마다 레벨이 올라요: 4 → 8 → 12 → 16 → 20 → 26 → 30 → 33<br>· 보스 사이에 스킬·스탯 포인트를 직접 분배하며, 쓰러지면 1레벨 분량(스탯 +2, 스킬 +1)을 찍고 재도전해요. 진행은 저장되지 않아요.<br><br><b>2인 모드</b><br>· 타이틀의 2인 모드를 고르면 둘이서 같은 월드에서 함께 싸워요. 태블릿을 세로로 놓고 마주 앉으세요.<br>· 위쪽 조작부는 P2(거꾸로), 아래쪽 조작부는 P1이에요. 직업 선택과 포인트 분배는 각자 차례로 해요.<br>· 둘이 하면 적이 더 강해져요. 쓰러지면 10초 뒤 동료 곁에서 부활하고, 둘 다 쓰러지면 재도전해요. 진행은 저장되지 않아요.<br><br><b>팁</b><br>· 보스의 공격 범위 표시(빨간 원)를 보고 피하세요.<br>· 진행 상황은 자동 저장되고, 시작 화면에서 이어하기를 할 수 있어요.<br>· 🌐 버튼으로 언제든 언어를 바꿀 수 있어요.</div><button class="m" onclick="G.menu='t';ui()">닫기</button>`}
+else if(t=='help'){h=`<h3>게임 설명</h3><div class="hp"><b>목표</b><br>15개 스테이지를 돌파하세요. 몬스터를 처치하면 경험치를 얻고, 2·4·6·8·10·12·14·15 스테이지에는 보스가 등장합니다. 마지막 보스 하데스를 쓰러뜨리면 클리어!<br><br><b>조작</b><br>· 왼쪽 조이스틱: 이동<br>· 오른쪽 스킬 버튼 8개: 스킬 사용 (직업당 최대 4개 장착)<br>· 일반 공격은 가까운 적에게 자동으로 나갑니다.<br>· 레벨업으로 얻은 스탯·스킬 포인트는 스테이지를 클리어할 때 성장 화면에서 분배해요. 플레이 중에는 성장 화면을 열 수 없어요.<br><br><b>직업 선택</b><br>· 처음에 첫 직업을 고르고, 스테이지 1을 클리어하면 두 번째 직업을 고릅니다. 두 직업의 스킬을 함께 쓸 수 있어요.<br>· 법사 · 전사 · 소환사 · 어쌔신 · 용의 신궁 · 자연술사 (소환사와 자연술사는 함께 고를 수 없어요)<br>· 직업마다 고유 버프가 있고, 고른 두 직업의 버프가 모두 적용돼요.<br>· 🎲 랜덤 버튼으로 직업을 무작위로 고를 수도 있어요.<br><br><b>성장</b><br>· 레벨업: 스탯 포인트 +2, 스킬 포인트 +1, 체력 30% 회복<br>· 스테이지 클리어: 스킬 포인트 +2<br>· 시작할 때 스탯 포인트 5점과 스킬 포인트 6점을 드려요.<br>· 스킬 레벨을 올리면 범위·개수·위력이 강해집니다.<br>· 스킬 칸은 직업당 3개이고, 스테이지 8부터 4개로 늘어납니다.<br>· 데미지 스탯: 법사·소환사·자연술사는 지능+체력, 전사는 힘+체력, 어쌔신은 민첩+체력, 용의 신궁은 민첩+지능+체력 (소환사를 뺀 나머지는 체력 효과가 절반)<br><br><b>스킬 등급</b><br>· C·B급 스킬은 처음부터, A급은 스테이지 5, S급은 스테이지 10부터 배울 수 있어요.<br>· 스킬 최대 레벨은 스테이지가 오를수록 열립니다. (일반: 스테이지 3→5 · 5→8 · 8→10)<br>· A급 최대 레벨: 스테이지 5부터 4, 7부터 7, 9부터 9, 11부터 10<br>· S급 최대 레벨: 스테이지 10부터 3, 12부터 6, 13부터 9, 14부터 10<br><br><b>보스런</b><br>· 타이틀의 보스런을 고르면 보스 8마리에 이어 보스 총출동(일반 → 영혼) 2라운드까지, 총 10연전을 싸워요.<br>· 보스를 쓰러뜨릴 때마다 레벨이 올라요: 4 → 8 → 12 → 16 → 20 → 26 → 30 → 33<br>· 보스 사이에 스킬·스탯 포인트를 직접 분배하며, 쓰러지면 1레벨 분량(스탯 +2, 스킬 +1)을 찍고 재도전해요. 진행은 저장되지 않아요.<br><br><b>2인 모드</b><br>· 타이틀의 2인 모드를 고르면 둘이서 같은 월드에서 함께 싸워요. 태블릿을 세로로 놓고 마주 앉으세요.<br>· 위쪽 조작부는 P2(거꾸로), 아래쪽 조작부는 P1이에요. 직업 선택과 포인트 분배는 각자 차례로 해요.<br>· 둘이 하면 적이 더 강해져요. 쓰러지면 10초 뒤 동료 곁에서 부활하고, 둘 다 쓰러지면 재도전해요. 진행은 저장되지 않아요.<br><br><b>팁</b><br>· 보스의 공격 범위 표시(빨간 원)를 보고 피하세요.<br>· 진행 상황은 자동 저장되고, 시작 화면에서 이어하기를 할 수 있어요.<br>· 🌐 버튼으로 언제든 언어를 바꿀 수 있어요.</div><button class="m" onclick="G.menu='t';ui()">닫기</button>`}
 else if(t=='pv'){h=pvHtml()}
-else if(t=='t'){const ch=['mage','warrior','summoner','assassin','dragon','naturist'].map((c,i)=>`<img src="${hum('t'+c,CP[c],c,c,null,0,0).toDataURL()}" style="animation-delay:${i*.15}s">`).join('');h=`<div class="ttl">픽셀퀘스트</div><div class="sub">PIXEL QUEST · 15 STAGES</div><div class="chars">${ch}</div>`+(SV0?`<button class="m" onclick="cont()">이어하기<small>STAGE ${SV0.stage} · Lv${SV0.lv}</small></button><button class="m" onclick="fresh()">새로 시작</button>`:`<button class="m" onclick="fresh()">게임 시작</button>`)+`<button class="m" onclick="brStart()" style="background:#5a2a3a">보스런<small>보스만 연속 도전 · 10연전</small></button><button class="m" onclick="MP.localStart()" style="background:#2a5a3a">2인 모드<small>태블릿 하나로 마주 보고 · 협동</small></button><button class="m" onclick="pvOpen()" style="background:#2a3f5a">스킬보기<small>직업별 스킬 10개 체험</small></button><button class="m" onclick="G.menu='help';ui()" style="background:#2a2a44">게임 설명</button><button class="m" onclick="G.lp='t';menu('lang')" style="background:#2a2a44">🌐 Language / 언어</button><div class="sub" style="margin-top:8px">조이스틱으로 이동 · 스킬 버튼으로 공격</div><div class="sub" style="opacity:.35;font-size:10px">빌드 1110-2328 · 2P11</div>`}
+else if(t=='t'){const ch=['mage','warrior','summoner','assassin','dragon','naturist'].map((c,i)=>`<img src="${hum('t'+c,CP[c],c,c,null,0,0).toDataURL()}" style="animation-delay:${i*.15}s">`).join('');h=`<div class="ttl">픽셀퀘스트</div><div class="sub">PIXEL QUEST · 15 STAGES</div><div class="chars">${ch}</div>`+(SV0?`<button class="m" onclick="cont()">이어하기<small>STAGE ${SV0.stage} · Lv${SV0.lv}</small></button><button class="m" onclick="fresh()">새로 시작</button>`:`<button class="m" onclick="fresh()">게임 시작</button>`)+`<button class="m" onclick="brStart()" style="background:#5a2a3a">보스런<small>보스만 연속 도전 · 10연전</small></button><button class="m" onclick="MP.localStart()" style="background:#2a5a3a">2인 모드<small>태블릿 하나로 마주 보고 · 협동</small></button><button class="m" onclick="pvOpen()" style="background:#2a3f5a">스킬보기<small>직업별 스킬 10개 체험</small></button><button class="m" onclick="G.menu='help';ui()" style="background:#2a2a44">게임 설명</button><button class="m" onclick="G.lp='t';menu('lang')" style="background:#2a2a44">🌐 Language / 언어</button><div class="sub" style="margin-top:8px">조이스틱으로 이동 · 스킬 버튼으로 공격</div><div class="sub" style="opacity:.35;font-size:10px">빌드 1110-2328 · 2P13</div>`}
 else if(t=='win'){const nm=G.cls.map(c=>CL[c].n).join(' + '),ch=G.cls.map((c,i)=>`<img src="${hum('w'+c+i,CP[c],c,c,null,0,0).toDataURL()}" style="animation-delay:${i*.2}s">`).join('');h=`<div class="ttl" style="font-size:30px">ENDING</div><div class="chars">${ch}</div><h3 class="fi" style="animation-delay:.5s">최후의 괴물 하데스가 쓰러졌다!</h3><p class="fi" style="animation-delay:1.6s">어둠에 잠겼던 15개의 던전이 평화를 되찾았다.</p><p class="fi" style="animation-delay:2.8s">영웅들의 이야기는 이제 전설이 되어 남는다…</p><p class="fi" style="animation-delay:4s;font-size:13px;opacity:.8;margin:8px 0">직업: ${nm} · 최종 레벨: ${G.lv}</p><button class="m fi" style="animation-delay:5s" onclick="location.reload()">타이틀로</button>`}
 ov.innerHTML=h}
 function pickRand(){const L=Object.keys(CL).filter(c=>c!=G.cls[0]&&!(G.cls[0]&&((G.cls[0]=='summoner'&&c=='naturist')||(G.cls[0]=='naturist'&&c=='summoner'))));pick(L[Math.random()*L.length|0])}
 function pick(c){if(G.cls[0]&&((G.cls[0]=='summoner'&&c=='naturist')||(G.cls[0]=='naturist'&&c=='summoner')))return;const f=!G.cls.length;G.cls.push(c);recalc();if(f){P.hp=P.mhp;G.pend=1}closeM();if(f&&G.stage==1&&G.lv==1&&!MP.on){startCut('intro')}}
 function up(k){G.stat[k]++;G.sp--;if(k=='h')recalc();ui()}
-const TL={mage:'CBBAS',warrior:'CBBAS',summoner:'CBBAS',assassin:'CBBAS',dragon:'CBBAS',naturist:'CBBAS'};const rqOf=t=>t=='S'?10:t=='A'?5:1;const smaxI=i=>{const t=TL[G.cls[i<5?0:1]][i%5];return t=='S'?(G.stage>=14?10:G.stage>=13?9:G.stage>=12?6:3):t=='A'?(G.stage>=11?10:G.stage>=9?9:G.stage>=7?7:4):smax()};const smax=()=>G.stage>=8?10:G.stage>=5?8:G.stage>=3?5:3;function nsl(g){return G.stage>=8?4:(g&&G.lv<4)?0:3}function fixSk(){for(let g=0;g<2;g++){const c=G.cls[g];if(!c)continue;const keep=[];for(const ix of G.pk[g]){const i=g*5+ix;if(G.stage>=rqOf(TL[c][ix])&&keep.length<nsl(g))keep.push(ix);else{G.kp+=G.sl[i];G.sl[i]=0}}G.pk[g]=keep}}function sk(i){const g=i<5?0:1,c=G.cls[g];if(!c||!G.kp||G.sl[i]>=smaxI(i)||G.stage<rqOf(TL[c][i%5]))return;if(!G.sl[i]){if(G.pk[g].length>=nsl(g))return;G.pk[g].push(i%5)}G.sl[i]++;G.kp--;ui()}
+const TL={mage:'CBBAS',warrior:'CBBAS',summoner:'CBBAS',assassin:'CBBAS',dragon:'CBBAS',naturist:'CBBAS'};const rqOf=t=>t=='S'?10:t=='A'?5:1;const smaxI=i=>{const t=TL[G.cls[i<5?0:1]][i%5];return t=='S'?(G.stage>=14?10:G.stage>=13?9:G.stage>=12?6:3):t=='A'?(G.stage>=11?10:G.stage>=9?9:G.stage>=7?7:4):smax()};const smax=()=>G.stage>=8?10:G.stage>=5?8:G.stage>=3?5:3;function nsl(g){return G.stage>=8?4:(g&&G.stage<2&&!G.brm)?0:3}function fixSk(){for(let g=0;g<2;g++){const c=G.cls[g];if(!c)continue;const keep=[];for(const ix of G.pk[g]){const i=g*5+ix;if(G.stage>=rqOf(TL[c][ix])&&keep.length<nsl(g))keep.push(ix);else{G.kp+=G.sl[i];G.sl[i]=0}}G.pk[g]=keep}}function sk(i){const g=i<5?0:1,c=G.cls[g];if(!c||!G.kp||G.sl[i]>=smaxI(i)||G.stage<rqOf(TL[c][i%5]))return;if(!G.sl[i]){if(G.pk[g].length>=nsl(g))return;G.pk[g].push(i%5)}G.sl[i]++;G.kp--;ui()}
 var TRL=[];function dTrl(x0,y0,x1,y1,al){const L=Math.hypot(x1-x0,y1-y0);if(L<4)return;const t=Math.min(1,110/L),tx=x1-(x1-x0)*t,ty=y1-(y1-y0)*t,gr=g.createLinearGradient(tx,ty-8,x1,y1-8);gr.addColorStop(0,'rgba(200,240,255,0)');gr.addColorStop(1,'rgba(225,250,255,'+(.45*al)+')');g.save();g.globalCompositeOperation='lighter';g.strokeStyle=gr;g.lineWidth=1.6;g.lineCap='round';g.beginPath();g.moveTo(tx,ty-8);g.lineTo(x1,y1-8);g.stroke();g.restore()}function clear(){MP.rpos();TRL=[];P.fg=null;P.gh=0;SWD=[];THB=[];E=[];PR=[];AL=AL.filter(a=>a.sp=='sk'||a.sp=='sp'||a.sp=='en');ZN=[];SCH=[];FX=[];PT=[];DN=[];EP=[];DR=null;DB=null}
-function nextS(){if(G.stage>=15){if(!G.brm)try{localStorage.removeItem(SV)}catch(e){}return startCut('outro',()=>menu('win'))};G.stage++;if(G.stage==5||G.stage==10||G.kp)G.pend=1;G.goal=Math.round(72*Math.pow(1.2,G.stage-1));G.kills=0;G.boss=0;clear();P.hp=P.mhp;P.x=100;AL.forEach(a=>{a.x=100+(R()-.5)*60;a.y=P.y+(R()-.5)*30});closeM()}
+function nextS(){if(G.stage>=15){if(!G.brm)try{localStorage.removeItem(SV)}catch(e){}return startCut('outro',()=>menu('win'))};G.stage++;if(G.stage==5||G.stage==10||G.kp||G.sp)G.pend=1;MP.pl();G.goal=Math.round(72*Math.pow(1.2,G.stage-1));G.kills=0;G.boss=0;clear();P.hp=P.mhp;P.x=100;AL.forEach(a=>{a.x=100+(R()-.5)*60;a.y=P.y+(R()-.5)*30});closeM()}
 function retry(){MP.reviveAll();if(G.brm){G.sp+=2;G.kp+=1;G.pend=1;DN.push({x:cam+W/2,y:112,t:2.5,v:'1레벨 분량 포인트 +'})}G.kills=0;G.boss=0;clear();P.dead=0;P.hp=P.mhp;P.inv=1;closeM()}
 function pStep(dt){const CC0=P.stun>0||P.pet>0||P.frz>0||G.prac,mx=CC0?0:(K.ax||(K.r-K.l)),my=CC0?0:(K.ay||(K.d-K.u));if(Math.abs(mx)>.2)P.f=Math.sign(mx);P.mv=Math.hypot(mx,my)>.1;const sp=P.spd*(HAS('dragon')?1.25:1)*(P.spin>0?1.5:1);
 if(P.dash>0){P.dash-=dt;P.x+=P.dvx*dt;P.y+=P.dvy*dt;P.inv=Math.max(P.inv,.12);P.dt=(P.dt||0)-dt;if(P.dt<=0){P.dt=.05;for(const e of E)if(!e.dead&&P.dd>0&&Math.hypot(Math.max(0,Math.abs(e.x-P.x)-e.w/2),(e.y-P.y)*2)<38)hurt(e,P.dd,{...P.do,st:1})}}else if(P.dq>0){nextDash()}else if(P.fg){gstep(dt,sp);P.x+=mx*sp*dt;P.y+=my*sp*.7*dt}else if(P.spin>0&&!mx&&!my){const R0=46;if(!P.spc)P.spc={x:P.x+R0,y:P.y,a:0};P.spc.a+=dt*6.2832/(P.spt||3.55);const a=Math.PI+P.spc.a,nx=P.spc.x+Math.cos(a)*R0,ny=P.spc.y+Math.sin(a)*R0*.55;if(Math.abs(nx-P.x)>.2)P.f=nx>P.x?1:-1;P.x=nx;P.y=ny;P.mv=1}else{if(P.spc)P.spc=null;P.x+=mx*sp*dt;P.y+=my*sp*.7*dt}
@@ -3248,7 +3251,7 @@ if(P.spin>0){P.spin-=dt;P.st=(P.st||0)-dt;if(P.st<=0){P.st=.25;nova(P.x,P.y,P.sr
 P.inv-=dt;P.hid-=dt;if(P.flg>0){P.flg-=dt;if(P.flg<=0){P.flg=0;recalc();P.hp=Math.max(1,Math.min(P.hp,P.mhp))}}if(P.gnt>0){P.gnt-=dt;if(P.gnt<=0){P.gnt=0;recalc();P.hp=Math.max(1,Math.min(P.hp,P.mhp))}}G.cd=G.cd.map(v=>Math.max(0,v-dt));
 for(let ci=0;ci<(G.prac?0:G.cls.length);ci++){const cc=G.cls[ci];if(cc=='mage'){if(!P.dead)morb(dt)}else if(cc=='naturist'){if(!P.dead)nobU(dt)}else basicA(cc,ci?'ac2':'ac',dt)}
 G.sr=(G.sr||0)-dt;if(G.sr<=0){G.sr=.7;skRoles()}}
-function upd(dt){if(G.menu&&!(MP.rem.length&&G.menu=='lv'))return;G.t+=dt;if(G.prac)pracTick(dt);for(const e of E)if(e.pu)puStep(e,dt);swStep(dt);if(P.hp<(P.lh||P.hp)-.5)sfx('hurt');P.lh=P.hp;
+function upd(dt){if(G.menu&&!(MP.rem.length&&G.menu=='lv'&&!MP.local))return;G.t+=dt;if(G.prac)pracTick(dt);for(const e of E)if(e.pu)puStep(e,dt);swStep(dt);if(P.hp<(P.lh||P.hp)-.5)sfx('hurt');P.lh=P.hp;
 MP.pstep(dt);G.sp2-=dt;const cap=Math.min(30+10*MP.rem.length,Math.round(3.6*Math.pow(1.2,G.stage-1)*(1+.6*MP.rem.length)));
 if(G.sp2<=0&&E.length<cap&&G.kills+E.length<G.goal&&!G.clr&&!G.boss&&G.cls.length&&!G.prac){G.sp2=Math.max(.067,.8/cap);const s=G.stage,r=R(),t=r<.03+.01*s?3:r<.22?2:r<.5?0:1,T=TY[t],hp=([500,500,1000,1000,2000,2000,3500,3500,6000,6000,7500,7500,8500,8500,11200][s-1]||11200)*T.hp/6*MP.hk();E.push({x:cl(R()<.5?cam+8:cam+W-8,0,WW),y:GT+R()*(GB-GT),oy:(R()-.5)*30,w:T.w,h:T.h,hp,mh:hp,sp:(34+R()*24+s*3)*T.sp,d:7.2*1.1*Math.pow(1.1,s-1)*T.d,sn:0,sl:0,fl:0,c:0,t,k:[0,5][R()*2|0],f:1,rg:(G.sc=(G.sc||0)+1)%10>=7?1:0,rc:1+R()*2});spx(E[E.length-1],s,T);if((E[E.length-1].k==1||E[E.length-1].k==0)&&!E[E.length-1].nm)E[E.length-1].rg=0}
 bUpd(dt);SH=Math.max(0,SH-dt*28);if(DC){DC.l-=dt;if(DC.l<=0)DC=null}if(DR){DR.l-=dt;if(DR.l<=0)DR=null}if(DB){DB.l-=dt;if(DB.l<=0)DB=null}for(const b of EP){b.l-=dt;b.x+=b.vx*dt;b.y+=b.vy*dt;if(b.l>0&&PT.length<170&&((b.tt=(b.tt||0)-dt)<=0)){b.tt=.05;PT.push({x:b.x,y:b.y-4,vx:(R()-.5)*20,vy:-12,l:.28,c:b.c})}MP.all(()=>{if(b.l>0&&!P.dead&&P.inv<=0&&P.z<10&&Math.abs(b.x-P.x)<8&&Math.abs(b.y-P.y)<8){P.hp-=inP(b.d*(P.spin>0?.5:1),'p',b.src);P.inv=.4;b.l=0;if(P.hp<=0)P.dead=1}});if(b.l>0)for(const z of ZN)if(z.k=='t'&&z.hp>0&&Math.abs(b.x-z.x)<9&&Math.abs(b.y-z.y)<10){z.hp-=b.d*.8;z.fl=.1;b.l=0;break}if(b.l>0)for(const a of AL){if(Math.abs(b.x-a.x)<a.w/2+4&&Math.abs(b.y-a.y)<12){a.hp-=b.d*.8;a.fl=.1;b.l=0;break}}}for(const b of EP)if(b.l<=0&&b.l>-1&&!b.bu){b.bu=1;FX.push({x:b.x,y:b.y,r:14,l:.2,m:.2,c:b.c||'#f55'})}EP=EP.filter(b=>b.l>0&&b.y>GT-10&&b.y<GB+20);
@@ -3565,7 +3568,7 @@ js.addEventListener('pointermove',e=>{if(e.pointerId===jid)jv(e)});
 const hold=(el,k)=>{const on=e=>{e.preventDefault();K[k]=1},off=e=>{e.preventDefault();K[k]=0};el.addEventListener('pointerdown',on);['pointerup','pointercancel','pointerleave'].forEach(n=>el.addEventListener(n,off))};
 
 B.forEach((b,i)=>b.addEventListener('pointerdown',e=>{e.preventDefault();cast(i)}));
-$('#bs').addEventListener('pointerdown',e=>{e.preventDefault();if(G.prac){pracExit();return}if(!G.menu&&G.cls.length)menu('lv')});
+$('#bs').addEventListener('pointerdown',e=>{e.preventDefault();if(G.prac){pracExit();return}});
 const KM={ArrowLeft:'l',ArrowRight:'r',ArrowUp:'u',ArrowDown:'d',' ':'j'};
 addEventListener('keydown',e=>{if(KM[e.key])K[KM[e.key]]=1;const n='1234567890'.indexOf(e.key);if(n>=0)cast(n)});
 addEventListener('keyup',e=>{if(KM[e.key])K[KM[e.key]]=0});
@@ -3593,7 +3596,7 @@ function frameFX(){
  g.restore();
 }
 function loop(t){RIGAD(t);const dt=Math.min(.05,(t-last)/1000||0);last=t;
-if(!G.menu&&MP.guest){if(!G.cls.length||(G.lv>=4&&G.cls.length<2))menu('c');else if(G.pend){G.pend=0;menu('lv')}}else if(!G.menu){if(!G.cls.length||(G.lv>=4&&G.cls.length<2))menu('c');else if(P.dead&&(!MP.on||MP.allDead()))menu('dead');else if(G.bossCine&&G.bossCine.kind==='out'&&G.t-G.bossCine.at<2.3){}else if(G.actP){G.ap=G.actP-1;G.actP=0;menu('act')}else if(G.pend){G.pend=0;menu('lv')}else if(G.clr){G.clr=0;menu('clr')}else if(G.brm&&G.cls.length>=2&&!G.boss&&!G.clr){clear();P.x=100;P.y=280;P.hp=P.mhp;AL.forEach(a=>{a.x=100+(R()-.5)*60;a.y=P.y+(R()-.5)*30});G.boss=1;spawnBoss()}}
+if(!G.menu&&MP.guest){if(!G.cls.length||((G.stage>=2||G.brm)&&G.cls.length<2))menu('c');else if(G.pend){G.pend=0;menu('lv')}}else if(!G.menu){if(!G.cls.length||((G.stage>=2||G.brm)&&G.cls.length<2))menu('c');else if(P.dead&&(!MP.on||MP.allDead()))menu('dead');else if(G.bossCine&&G.bossCine.kind==='out'&&G.t-G.bossCine.at<2.3){}else if(G.actP){G.ap=G.actP-1;G.actP=0;menu('act')}else if(G.pend){G.pend=0;menu('lv')}else if(G.clr){G.clr=0;menu('clr')}else if(G.brm&&G.cls.length>=2&&!G.boss&&!G.clr){clear();P.x=100;P.y=280;P.hp=P.mhp;AL.forEach(a=>{a.x=100+(R()-.5)*60;a.y=P.y+(R()-.5)*30});G.boss=1;spawnBoss()}}
 if(MP.guest)MP.gupd(dt);else upd(dt);draw();hud();frameFX();MP.after(dt);if(CUT)cutStep(dt);requestAnimationFrame(loop)}
 requestAnimationFrame(loop);
 /* ===== RIG graphics (vector rig art) ===== */
