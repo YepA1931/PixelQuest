@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#11161c">
+<title>가족 무전기</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:#11161c;color:#eef2f5;font-family:system-ui,sans-serif;min-height:100dvh;display:flex;justify-content:center}
+main{width:100%;max-width:420px;padding:24px 20px;display:flex;flex-direction:column;gap:14px}
+[hidden]{display:none!important}
+h1{font-size:26px;text-align:center;margin:12px 0}
+input{width:100%;padding:15px;border-radius:12px;border:1px solid #35424f;background:#1b232c;color:inherit;font-size:17px}
+button{border:0;border-radius:12px;padding:14px;font-size:16px;font-weight:700;background:#2b3743;color:inherit}
+.go{background:#ffb020;color:#201500}
+p.sub{color:#8e9dab;font-size:13px;line-height:1.6;text-align:center}
+#status{text-align:center;font-size:14px;color:#8e9dab;min-height:20px}
+#members{list-style:none;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:44px}
+#members li{padding:10px 14px;border-radius:99px;background:#1b232c;border:2px solid #35424f;font-size:15px}
+#members li.on{border-color:#3ddc84;background:#143526}
+#ptt{width:min(72vw,280px);aspect-ratio:1;border-radius:50%;margin:auto;font-size:24px;background:#ffb020;color:#201500;border:10px solid #5c4313;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+#ptt.on{background:#ff4d4f;border-color:#6b2324;color:#fff;transform:scale(.97)}
+.row{display:flex;gap:10px}.row button{flex:1}
+</style>
+</head>
+<body>
+<main>
+<h1>📻 가족 무전기</h1>
+
+<form id="join">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <input id="name" placeholder="내 이름 (예: 아빠)" maxlength="10" required>
+    <input id="room" placeholder="가족 암호 (8자 이상)" minlength="8" maxlength="40" required autocapitalize="off" autocomplete="off">
+    <button class="go" id="joinBtn">들어가기</button>
+    <p class="sub">같은 암호를 넣은 사람끼리 연결돼요 (최대 8명).<br>암호는 남이 못 맞힐 걸로, 가족에게만 알려주세요.</p>
+  </div>
+</form>
+
+<div id="status" role="status"></div>
+
+<section id="radio" hidden style="flex:1;display:flex;flex-direction:column;gap:16px">
+  <ul id="members"></ul>
+  <button id="ptt">누르고<br>말하기</button>
+  <button id="sound" class="go" hidden>🔊 눌러서 소리 켜기</button>
+  <div class="row"><button id="invite">초대 링크 복사</button><button id="leave">나가기</button></div>
+  <p class="sub">화면을 켜 둔 상태에서 사용하세요.</p>
+</section>
+</main>
+
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const MAX = 8;
+let peer, mic, ac, prefix, slot = 0, myName = '', talking = false, timer, wake, session = 0;
+const links = new Map(); // peerId -> {data, call, audio, name, talk, seen}
+
+const store = {
+  get(k){ try { return localStorage.getItem(k) || ''; } catch { return ''; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch {} }
+};
+$('name').value = store.get('wt-name');
+$('room').value = new URLSearchParams(location.hash.slice(1)).get('room') || store.get('wt-room');
+
+const status = t => $('status').textContent = t;
+
+async function roomPrefix(code){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(code));
+  return 'fwt-' + [...new Uint8Array(buf)].slice(0,12).map(b=>b.toString(16).padStart(2,'0')).join('') + '-';
+}
+
+async function getMic(){
+  mic = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
+  mic.getAudioTracks()[0].enabled = talking;
+}
+
+$('join').onsubmit = async e => {
+  e.preventDefault();
+  myName = $('name').value.trim();
+  const code = $('room').value.trim();
+  if (!myName || code.length < 8) return status('이름과 8자 이상 암호를 넣어주세요');
+  if (!window.Peer) return status('연결 모듈을 못 불러왔어요. 새로고침 해주세요');
+  $('joinBtn').disabled = true;
+  try {
+    ac = new (window.AudioContext || window.webkitAudioContext)();
+    ac.resume();
+    status('마이크 허용을 눌러주세요');
+    await getMic();
+  } catch {
+    $('joinBtn').disabled = false;
+    return status('마이크를 쓸 수 없어요. https 주소인지, 권한을 허용했는지 확인해주세요');
+  }
+  store.set('wt-name', myName); store.set('wt-room', code);
+  prefix = await roomPrefix(code);
+  $('join').hidden = true; $('radio').hidden = false;
+  keepAwake();
+  session++;
+  claim(1, session);
+};
+
+// 빈 자리(1~8)를 하나 차지한다
+function claim(n, s){
+  if (s !== session) return;
+  if (n > MAX) { leave(); return status('방이 꽉 찼어요'); }
+  status('연결 중…');
+  const p = new Peer(prefix + n);
+  peer = p;
+  p.on('open', () => {
+    slot = n; refresh(); scan();
+    clearInterval(timer); timer = setInterval(tick, 4000);
+  });
+  p.on('connection', c => wireData(c));
+  p.on('call', call => { call.answer(mic); wireCall(call); });
+  p.on('disconnected', () => setTimeout(() => { if (s === session && !p.destroyed && p.disconnected) p.reconnect(); }, 2000));
+  p.on('error', err => {
+    if (s !== session) return;
+    if (err.type === 'unavailable-id' && !slot) { p.destroy(); claim(n+1, s); }
+    else if (err.type === 'peer-unavailable') { /* 빈 자리 */ }
+    else if (!slot) { p.destroy(); status('서버 연결 실패, 다시 시도 중…'); setTimeout(() => claim(1, s), 3000); }
+    else status('연결이 불안정해요');
+  });
+}
+
+const link = id => {
+  if (!links.has(id)) links.set(id, {name:'', talk:false, seen:Date.now()});
+  return links.get(id);
+};
+
+// 번호가 낮은 쪽이 높은 쪽에 연결을 건다 (중복 방지)
+function scan(){
+  if (!peer || !peer.open) return;
+  for (let n = slot+1; n <= MAX; n++){
+    const id = prefix + n;
+    if (links.has(id)) continue;
+    const c = peer.connect(id, {reliable:true});
+    c.on('open', () => {
+      if (links.has(id)) return;
+      wireData(c, true);
+      wireCall(peer.call(id, mic));
+    });
+  }
+}
+
+function wireData(c, isOpen){
+  if (!c.peer.startsWith(prefix)) return c.close();
+  const old = links.get(c.peer);
+  if (old && old.data && old.data !== c) drop(c.peer);
+  const l = link(c.peer); l.data = c;
+  const hello = () => { c.send({type:'hello', name:myName, talk:talking}); };
+  if (isOpen) hello(); else c.on('open', hello);
+  c.on('data', m => {
+    if (links.get(c.peer) !== l || !m) return;
+    l.seen = Date.now();
+    if (m.type === 'bye') return drop(c.peer);
+    if (typeof m.name === 'string') l.name = m.name.slice(0,10);
+    if (typeof m.talk === 'boolean') { if (m.talk && !l.talk) beep(880); l.talk = m.talk; }
+    refresh();
+  });
+  c.on('close', () => { if (links.get(c.peer) === l) drop(c.peer); });
+}
+
+function wireCall(call){
+  if (!call) return;
+  const l = link(call.peer); l.call = call;
+  call.on('stream', stream => {
+    if (links.get(call.peer) !== l) return;
+    if (!l.audio) { l.audio = new Audio(); l.audio.autoplay = true; }
+    l.audio.srcObject = stream;
+    l.audio.play().catch(() => $('sound').hidden = false);
+  });
+}
+
+function drop(id){
+  const l = links.get(id); if (!l) return;
+  links.delete(id);
+  try { l.call && l.call.close(); l.data && l.data.close(); } catch {}
+  if (l.audio) l.audio.srcObject = null;
+  refresh();
+}
+
+function send(msg){ for (const l of links.values()) if (l.data && l.data.open) l.data.send(msg); }
+
+function tick(){
+  send({type:'ping', talk:talking});
+  for (const [id,l] of links) if (Date.now() - l.seen > 15000) drop(id);
+  scan();
+}
+
+function refresh(){
+  const ul = $('members'); ul.textContent = '';
+  const add = (name, on) => { const li = document.createElement('li'); li.textContent = (on ? '🔊 ' : '') + name; li.className = on ? 'on' : ''; ul.append(li); };
+  add(myName + ' (나)', talking);
+  let count = 0, speaker = '';
+  for (const l of links.values()) if (l.name) { add(l.name, l.talk); count++; if (l.talk) speaker = l.name; }
+  if (!slot) return;
+  status(talking ? '말하는 중…' : speaker ? speaker + ' 말하는 중' : count ? count + '명과 연결됨' : '가족을 기다리는 중…');
+}
+
+function beep(freq){
+  if (!ac) return;
+  const o = ac.createOscillator(), g = ac.createGain();
+  o.frequency.value = freq; g.gain.value = .08;
+  o.connect(g).connect(ac.destination); o.start(); o.stop(ac.currentTime + .09);
+}
+
+function setTalk(on){
+  if (!mic || talking === on) return;
+  talking = on;
+  const t = mic.getAudioTracks()[0]; if (t) t.enabled = on;
+  $('ptt').classList.toggle('on', on);
+  if (on && navigator.vibrate) navigator.vibrate(30);
+  if (!on) beep(520);
+  send({type:'talk', talk:on});
+  refresh();
+}
+const ptt = $('ptt');
+ptt.addEventListener('pointerdown', e => { e.preventDefault(); ptt.setPointerCapture(e.pointerId); setTalk(true); });
+['pointerup','pointercancel','lostpointercapture'].forEach(ev => ptt.addEventListener(ev, () => setTalk(false)));
+ptt.addEventListener('contextmenu', e => e.preventDefault());
+addEventListener('keydown', e => { if (e.code === 'Space' && !$('radio').hidden) { e.preventDefault(); if (!e.repeat) setTalk(true); } });
+addEventListener('keyup', e => { if (e.code === 'Space') setTalk(false); });
+addEventListener('blur', () => setTalk(false));
+
+async function keepAwake(){ try { wake = await navigator.wakeLock.request('screen'); } catch {} }
+
+document.addEventListener('visibilitychange', async () => {
+  if (document.hidden) return setTalk(false);
+  if ($('radio').hidden) return;
+  keepAwake(); if (ac) ac.resume();
+  // 백그라운드에서 마이크가 끊겼으면 다시 연결
+  const t = mic && mic.getAudioTracks()[0];
+  if (t && t.readyState === 'ended') {
+    try {
+      await getMic();
+      for (const l of links.values()) {
+        const sender = l.call && l.call.peerConnection && l.call.peerConnection.getSenders()[0];
+        if (sender) sender.replaceTrack(mic.getAudioTracks()[0]);
+      }
+    } catch { status('마이크가 끊겼어요. 나갔다가 다시 들어와주세요'); }
+  }
+  for (const l of links.values()) { l.seen = Date.now(); if (l.audio) l.audio.play().catch(() => $('sound').hidden = false); }
+  tick();
+});
+
+$('sound').onclick = () => { ac.resume(); for (const l of links.values()) l.audio && l.audio.play(); $('sound').hidden = true; };
+
+$('invite').onclick = async () => {
+  const url = location.href.split('#')[0] + '#' + new URLSearchParams({room: $('room').value.trim()});
+  try { await navigator.clipboard.writeText(url); status('복사됨! 가족에게만 보내세요'); }
+  catch { prompt('이 링크를 복사하세요', url); }
+};
+
+function leave(){
+  send({type:'bye'});
+  session++; setTalk(false); clearInterval(timer);
+  [...links.keys()].forEach(drop);
+  const p = peer; peer = null; slot = 0;
+  setTimeout(() => p && p.destroy(), 200);
+  if (mic) mic.getTracks().forEach(t => t.stop());
+  mic = null;
+  if (ac) ac.close(); ac = null;
+  if (wake) wake.release().catch(()=>{});
+  $('radio').hidden = true; $('join').hidden = false; $('joinBtn').disabled = false; $('sound').hidden = true;
+  status('');
+}
+$('leave').onclick = leave;
+addEventListener('pagehide', () => { send({type:'bye'}); if (peer) peer.destroy(); });
+addEventListener('pageshow', e => { if (e.persisted && !$('radio').hidden) leave(); });
+</script>
+</body>
+</html>
